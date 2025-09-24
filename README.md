@@ -1,7 +1,7 @@
 
 # The Blue One
 
-A peaceful, modern Matomo theme with a "liquid glass" aesthetic.  
+A peaceful, modern Matomo theme. 
 Includes a **built-in Dark Mode** toggle (stores user preference in `localStorage`).
 
 ## Install
