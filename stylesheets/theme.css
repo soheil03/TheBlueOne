@@ -1,0 +1,3188 @@
+
+/* ====================================================================================
+   1) THEME TOKENS (Light & Dark) — "LIQUID GLASS" THEME
+   ==================================================================================== */
+:root {
+  /* Brand: "Apple" Blue */
+  --brand-h: 210;
+  --brand-s: 100%;
+  --brand-l: 50%;
+  --brand-solid: hsl(var(--brand-h), var(--brand-s), var(--brand-l)) !important;
+  --brand: var(--brand-solid) !important; /* Use solid color for buttons/links */
+
+  /* Brand Color Scale (Derived from Blue) */
+  --brand-50: #eff6ff !important;
+  --brand-100: #dbeafe !important;
+  --brand-200: #bfdbfe !important;
+  --brand-300: #93c5fd !important;
+  --brand-400: #60a5fa !important;
+  --brand-500: #3b82f6 !important;
+  --brand-600: #2563eb !important;
+  --brand-700: #1d4ed8 !important;
+
+  /* Neutrals (Cool Tones) */
+  --surface: #ffffff !important;
+  --muted: #64748b !important;   /* Slate-500 */
+  --text: #0f172a !important;     /* Slate-900 */
+  --bg-base: #f0f4f9 !important;   /* A light, cool gray */
+  background-image: radial-gradient(circle at top left, #ffffff, #f0f4f9) !important;
+
+  /* Borders */
+  --border: #cbd5e1 !important;        /* Slate-300 */
+  --soft-border: #e2e8f0 !important;   /* Slate-200 */
+
+  /* Status Tokens */
+  --ok: #16a34a !important;
+  --ok-bg: #f0fdf4 !important;
+  --warn: #f59e0b !important;
+  --warn-bg: #fffbeb !important;
+  --info: var(--brand-500) !important;
+  --info-bg: var(--brand-50) !important;
+
+  /* Badges */
+  --badge-up: var(--ok) !important;
+  --badge-up-bg: var(--ok-bg) !important;
+  --badge-down: #dc2626 !important;
+  --badge-down-bg: #fef2f2 !important;
+  --badge-neutral: #475569 !important;
+  --badge-neutral-bg: #f1f5f9 !important;
+
+  /* Liquid Glass Tokens */
+  --glass-blur: 24px !important;
+  --glass-bg: rgba(255, 255, 255, 0.6) !important;
+  --glass-border: rgba(255, 255, 255, 0.4) !important;
+
+  /* Legacy & Compatibility */
+  --brand-primary: var(--brand-solid) !important;
+
+  /* Unchanged Tokens */
+  --radius-sm: 8px !important;
+  --radius-md: 12px !important;
+  --radius-lg: 16px !important;
+  --space-xs: 6px !important;
+  --space-sm: 8px !important;
+  --space-md: 12px !important;
+  --space-lg: 18px !important;
+  --shadow-1: 0 1px 3px rgba(17, 17, 17, 0.08), 0 1px 2px rgba(17, 17, 17, 0.04) !important;
+  --shadow-2: 0 10px 24px rgba(17, 17, 17, 0.12), 0 4px 10px rgba(17, 17, 17, 0.06) !important;
+  --transition: 180ms cubic-bezier(.2, .9, .2, 1) !important;
+  --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.36) !important;
+}
+
+/* Theme-controlled dark (not OS-driven) */
+.dark-mode {
+  --brand-l: 55%; /* Lighter blue for dark mode */
+
+  --bg-base: #0a0f1e !important;
+  background-image: radial-gradient(circle at top left, #1e293b, #0a0f1e) !important;
+  --surface: #1e293b !important;   /* Slate-800 */
+  --muted: #94a3b8 !important;     /* Slate-400 */
+  --text: #f8fafc !important;       /* Slate-50 */
+  --border: #475569 !important;     /* Slate-600 */
+  --soft-border: #334155 !important; /* Slate-700 */
+
+  /* Dark Shadows */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+
+  /* Dark Mode Glass Tokens */
+  --glass-bg: rgba(30, 41, 59, 0.6) !important;  /* Slate-800 with transparency */
+  --glass-border: rgba(255, 255, 255, 0.1) !important;
+
+  /* Dark Status */
+  --ok-bg: rgba(74, 222, 128, 0.1) !important;
+  --warn-bg: rgba(245, 158, 11, 0.1) !important;
+  --info-bg: rgba(59, 130, 246, 0.1) !important;
+  --badge-down-bg: rgba(239, 68, 68, 0.1) !important;
+  --badge-neutral-bg: rgba(100, 116, 139, 0.15) !important;
+}
+
+
+/* ====================================================================================
+   2) GLOBAL RESETS & TYPOGRAPHY
+   ==================================================================================== */
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  min-height: 100% !important;
+  margin: 0 !important;
+  background: var(--bg-base) !important;
+  color: var(--text) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--space-sm) 0 !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+.container {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 var(--space-md) !important;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    transition: none !important;
+    animation: none !important
+  }
+}
+
+:focus {
+  outline: none !important;
+}
+
+:focus-visible {
+  box-shadow: var(--focus-ring) !important;
+  border-radius: calc(var(--radius-sm) + 2px) !important;
+}
+
+
+/* ====================================================================================
+   3) TOP NAV & TOP CONTROLS (Glass Facelift)
+   ==================================================================================== */
+
+/* Top Header Nav */
+#root nav {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+#root nav .nav-wrapper {
+  height: 60px !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+#logo img {
+  height: 26px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+#root nav ul.right {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  list-style: none !important;
+}
+
+#root nav ul.right>li>a:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+.dark-mode #root nav ul.right > li > a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+
+#root nav ul.right>li {
+  display: flex !important;
+  background: transparent !important;
+}
+
+#root nav ul.right>li>a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 14px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease !important;
+}
+
+#root nav ul.right>li.active>a {
+  background: var(--brand) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.25) !important;
+}
+
+nav .navbar-icon {
+  font-size: 18px !important;
+  line-height: 1 !important;
+  color: var(--muted) !important;
+}
+.dark-mode nav .navbar-icon { color: var(--muted) !important; }
+
+
+#root nav ul.right>li.active>a .navbar-icon,
+#root nav ul.right>li>a:hover .navbar-icon {
+  color: inherit !important;
+}
+
+/* Nav toggles (mobile) */
+.activateLeftMenu,
+.activateTopMenu {
+  display: none !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  transition: background .18s ease, border-color .18s ease !important;
+}
+
+.activateLeftMenu:hover,
+.activateTopMenu:hover {
+  background: var(--soft-border) !important;
+}
+
+@media (max-width: 992px) {
+  #root nav ul.right {
+    display: none !important;
+  }
+
+  .activateLeftMenu,
+  .activateTopMenu {
+    display: inline-flex !important;
+  }
+
+  #mobile-top-menu {
+    padding: 10px !important;
+    background: var(--surface) !important;
+    border-top: 1px solid var(--soft-border) !important;
+  }
+
+  #mobile-top-menu>li>a {
+    display: block !important;
+    padding: 12px 14px !important;
+    margin: 6px 0 !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    background: var(--bg-base) !important;
+    transition: background .18s ease !important;
+  }
+
+  #mobile-top-menu>li>a:hover {
+    background: var(--soft-border) !important;
+  }
+
+  #mobile-top-menu>li.active>a {
+    background: var(--brand) !important;
+    color: #fff !important;
+  }
+}
+
+/* Top Controls Shell */
+.top_controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin: 10px 0 14px !important;
+}
+
+.piwikTopControl,
+.borderedControl,
+.piwikSelector {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-1) !important;
+  transition: all .2s ease !important;
+}
+
+.piwikTopControl .title,
+.piwikTopControl a.title,
+.piwikTopControl .siteSelector .title {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 38px !important;
+  padding: 0 12px !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+  justify-content: center !important;
+}
+
+.piwikTopControl:hover {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: var(--shadow-2) !important;
+  transform: translateY(-1px);
+}
+.dark-mode .piwikTopControl:hover {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+
+.piwikTopControl .title:focus-visible {
+  box-shadow: var(--focus-ring) !important;
+}
+
+/* Quick access search */
+.quick-access.quickAccessInside,
+.quick-access {
+  position: relative !important;
+}
+
+.quick-access .icon-search {
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  opacity: .7 !important;
+  pointer-events: none !important;
+}
+
+#root .top_controls .quick-access input {
+  width: -webkit-fill-available !important;
+  padding: 10px 12px 10px 30px !important;
+  border-radius: 12px !important;
+}
+
+.quick-access input.s {
+  max-width: 30vw !important;
+  height: 38px !important;
+  padding: 0 12px 0 32px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+.quick-access input.s::placeholder {
+  color: var(--muted) !important;
+  opacity: .9 !important;
+}
+
+.quick-access .dropdown {
+  position: absolute !important;
+  left: 0 !important;
+  top: calc(100% + 8px) !important;
+  min-width: 320px !important;
+  max-width: 44vw !important;
+ /* background: var(--glass-bg) !important; */
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow-2) !important;
+  overflow: hidden !important;
+  z-index: 3800 !important;
+}
+.dark-mode .quick-access .dropdown { box-shadow: 0 12px 26px rgba(0,0,0,.4) !important; }
+
+.quick-access .dropdown ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 8px !important;
+}
+
+.quick-access .dropdown li a {
+  display: block !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.quick-access .dropdown li a:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+.dark-mode .quick-access .dropdown li a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+
+
+/* Site selector */
+.top_bar_sites_selector .siteSelector {
+  padding: 0 2px !important;
+}
+
+.top_bar_sites_selector .siteSelector .title {
+  gap: 10px !important;
+  padding: 0 12px !important;
+}
+
+.top_bar_sites_selector .siteSelector .icon-chevron-down {
+  transition: transform .2s ease !important;
+  opacity: .8 !important;
+}
+
+.top_bar_sites_selector .siteSelector.open .icon-chevron-down {
+  transform: rotate(180deg) !important;
+}
+
+.top_bar_sites_selector .dropdown {
+  margin-top: 8px !important;
+  border-radius: 12px !important;
+  border-color: var(--glass-border) !important;
+ /* background: var(--glass-bg) !important; */
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  box-shadow: var(--shadow-2) !important;
+}
+.dark-mode .top_bar_sites_selector .dropdown { box-shadow: 0 12px 26px rgba(0,0,0,.4) !important; }
+
+
+.top_bar_sites_selector .custom_select_container {
+  max-height: 360px !important;
+  overflow: auto !important;
+}
+
+.top_bar_sites_selector .custom_select_ul_list a {
+  display: block !important;
+  padding: 10px 12px !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+}
+
+.top_bar_sites_selector .custom_select_ul_list a:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+.dark-mode .top_bar_sites_selector .custom_select_ul_list a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+
+
+.top_bar_sites_selector .custom_select_ul_list a:active {
+  background: var(--brand) !important;
+  color: #fff !important;
+}
+
+/* Period selector + dropdown */
+.periodSelector {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 4px !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.periodSelector .title {
+  padding: 0 12px !important;
+  min-width: 148px !important;
+  justify-content: flex-start !important;
+}
+
+.periodSelector .move-period {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 10px !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid transparent !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--text) !important;
+  transition: background .18s ease, border-color .18s ease !important;
+}
+.dark-mode .periodSelector .move-period { background: rgba(255, 255, 255, 0.1) !important; }
+
+.periodSelector .move-period:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+.dark-mode .periodSelector .move-period:hover { background: rgba(255, 255, 255, 0.15) !important; }
+
+
+#periodMore.dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: auto !important;
+  z-index: 5000 !important;
+  width: max-content !important;
+  min-width: 520px !important;
+  max-width: min(92vw, 900px) !important;
+  padding: 12px !important;
+  border-radius: 12px !important;
+  /* background: var(--glass-bg) !important; */
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-2) !important;
+  overflow: visible !important;
+  width: -webkit-fill-available !important;
+}
+.dark-mode #periodMore.dropdown { box-shadow: 0 16px 28px rgba(0,0,0,.55) !important; }
+
+
+@media (max-width:1200px) {
+  .periodSelector #periodMore.dropdown {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+#periodMore .flex {
+  display: grid !important;
+  grid-template-columns: 320px 1fr 220px !important;
+  gap: 14px !important;
+  align-items: start !important;
+}
+
+@media (max-width:900px) {
+  #periodMore.dropdown {
+    left: 0 !important;
+    right: 0 !important;
+    width: 92vw !important;
+  }
+
+  #periodMore .flex {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#periodMore .period-date,
+#periodMore .dateRangePicker,
+#periodMore .period-type,
+#periodMore .compare-checkbox,
+#periodMore .apply-button-container {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+#periodMore .ui-datepicker {
+  width: auto !important;
+  min-width: 300px !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+}
+.dark-mode #periodMore .ui-datepicker { background: var(--surface) !important; }
+
+#periodMore .ui-datepicker-header {
+  background: var(--bg-base) !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  margin: 0 0 6px !important;
+}
+.dark-mode #periodMore .ui-datepicker-header { background: var(--bg-base) !important; }
+
+
+#periodMore .ui-datepicker-title select {
+  max-width: 48% !important;
+}
+
+#periodMore .ui-datepicker-calendar {
+  width: 100% !important;
+}
+
+#periodMore .ui-datepicker-calendar td a {
+  display: block !important;
+  padding: 6px 8px !important;
+  border-radius: 1px !important;
+}
+
+#periodMore .period-type {
+  margin-top: 2px !important;
+}
+
+#periodMore .period-type h6 {
+  margin: 0 0 8px !important;
+  font-weight: 700 !important;
+}
+
+#periodMore #otherPeriods p {
+  margin: 0 0 6px !important;
+}
+
+#periodMore #otherPeriods label span {
+  display: inline-block !important;
+  padding: 0 25px !important;
+  border-radius: 8px !important;
+}
+
+#periodMore #otherPeriods label:hover span {
+  background: var(--brand-50) !important;
+}
+.dark-mode #periodMore #otherPeriods label:hover span { background: rgba(255, 255, 255, 0.1) !important; }
+
+
+#periodMore #otherPeriods .selected-period-label span {
+  background: var(--brand-100) !important;
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+
+#periodMore .compare-checkbox {
+  margin-top: 10px !important;
+}
+
+#periodMore .compare-checkbox label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+#periodMore #comparePeriodToDropdown {
+  margin-top: 8px !important;
+}
+
+#periodMore .apply-button-container {
+  align-self: end !important;
+  justify-self: end !important;
+}
+
+#calendarApply.btn {
+  height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  background: var(--brand) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: 0 6px 14px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.25) !important;
+  font-weight: 700 !important;
+}
+
+/* Period dropdown inner selects above */
+#periodMore .compare-checkbox,
+#periodMore .compare-checkbox .matomo-form-field,
+#periodMore .compare-checkbox .select-wrapper {
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 5200 !important;
+}
+
+#periodMore .dropdown-content.select-dropdown {
+  position: absolute !important;
+  z-index: 5300 !important;
+  box-shadow: var(--shadow-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Segment Selector */
+.segmentEditorPanel .title {
+  padding: 0 12px !important;
+  height: 38px !important;
+  gap: 10px !important;
+}
+
+.segmentEditorPanel .dropdown.dropdown-body {
+  margin-top: 8px !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-2) !important;
+ /*  background: var(--glass-bg) !important; */
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  overflow: visible !important;
+}
+
+.segmentEditorPanel .segmentFilterContainer {
+  padding: 10px !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.segmentEditorPanel .segmentFilter {
+  width: 100% !important;
+  height: 36px !important;
+  padding: 0 10px !important;
+  background: rgba(0, 0, 0, .03) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+}
+.dark-mode .segmentEditorPanel .segmentFilter {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+
+.segmentEditorPanel .submenu {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+.segmentEditorPanel .segmentList .segname {
+  display: inline-block !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+}
+
+.segmentEditorPanel .segmentList li:hover .segname {
+  background: rgba(0, 0, 0, .04) !important;
+}
+.dark-mode .segmentEditorPanel .segmentList li:hover .segname { background: rgba(255, 255, 255, 0.1) !important; }
+
+
+.segmentEditorPanel .segmentList li.segmentSelected .segname {
+  background: var(--brand) !important;
+  color: #fff !important;
+}
+
+.segmentEditorPanel .add_new_segment.btn {
+  margin: 10px !important;
+  height: 36px !important;
+  padding: 0 12px !important;
+  border-radius: 9px !important;
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+  border: 1px solid var(--brand-200) !important;
+  font-weight: 700 !important;
+}
+
+.segmentEditorPanel .add_new_segment.btn:hover {
+  background: var(--brand-200) !important;
+}
+
+.segment-element .segment-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.segmentEditorPanel.expanded .segmentationContainer .dropdown-body {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.segmentListContainer {
+  position: relative !important;
+  z-index: 9000 !important;
+  overflow: visible !important;
+}
+
+.segment-element .segment-content {
+  overflow: visible !important;
+}
+
+#root>.top_controls .icon-arrowup:before,
+#root>.top_controls .icon-arrowdown:before {
+  padding: 0px 0 0 0 !important;
+}
+
+/* FIX: Elevate top controls to prevent dropdowns from appearing under widgets */
+.top_controls {
+  position: relative !important;
+  z-index: 4000 !important; /* Ensures this is above widgets and most other elements */
+}
+
+/* ====================================================================================
+   4) SECONDARY NAVBAR (LEFT) + FLYOUTS/POPOVER (Dark Glass Facelift)
+   ==================================================================================== */
+#root #secondNavBar {
+  background: transparent !important;
+}
+
+#root #secondNavBar .navbar {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--space-sm) !important;
+  margin: var(--space-sm) 0 0 12px !important;
+  padding: 10px !important;
+  list-style: none !important;
+  font-size: .94rem !important;
+  line-height: 1.25 !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: inset 0 0 0 1px var(--glass-border), var(--shadow-2) !important;
+  border: 0 !important;
+  position: relative !important;
+  overflow-x: visible !important;
+  overflow-y: auto !important;
+}
+.dark-mode #root #secondNavBar .navbar {
+    background: var(--glass-bg) !important;
+    box-shadow: inset 0 0 0 1px var(--glass-border), var(--shadow-2) !important;
+}
+
+#root #secondNavBar .navbar>.menuTab {
+  position: relative !important;
+}
+
+#root #secondNavBar .navbar>.menuTab>.item,
+#root #secondNavBar .navbar>.menuTab>a.item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  background: transparent !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .08s ease !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>.item,
+.dark-mode #root #secondNavBar .navbar>.menuTab>a.item {
+    color: var(--text) !important;
+}
+
+
+#root #secondNavBar .navbar .menu-icon {
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  color: var(--muted) !important;
+  opacity: .95 !important;
+  flex: 0 0 20px !important;
+}
+
+#root #secondNavBar .navbar>.menuTab>.item:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>.item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+#root #secondNavBar .navbar>.menuTab.active>.item {
+  background: var(--brand) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.35) !important;
+}
+
+#root #secondNavBar .navbar>.menuTab.active>.item .menu-icon {
+  color: #fff !important;
+}
+
+#root #secondNavBar a.item:focus-visible,
+#root #secondNavBar .menuDropdown .title:focus-visible {
+  box-shadow: var(--focus-ring) !important;
+  border-radius: 10px !important;
+}
+
+/* Section title */
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>.title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 10px !important;
+  margin: 2px 0 4px 0 !important;
+  color: var(--text) !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+  cursor: default !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>.title {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Submenu links */
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item,
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>.item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 9px 12px !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item,
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>.item {
+    color: var(--muted) !important;
+}
+
+
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: var(--text) !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li.active>a.item {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: var(--text) !important;
+}
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li.active>a.item {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+/* Nested flyout */
+#root #secondNavBar .navbar li li {
+  position: relative !important;
+}
+
+#root #secondNavBar .navbar li li ul {
+  display: none !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+  min-width: 220px !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow-2) !important;
+  z-index: 3600 !important;
+  transform: translateX(8px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform .16s ease, opacity .16s ease !important;
+}
+
+#root #secondNavBar .navbar li li:hover>ul,
+#root #secondNavBar .navbar li li:focus-within>ul,
+#root #secondNavBar .navbar li li.open>ul {
+  display: block !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#root #secondNavBar .navbar li li ul.align-left {
+  left: auto !important;
+  right: 100% !important;
+  transform: translateX(-8px) !important;
+}
+
+#root #secondNavBar .navbar li li ul li>a.item {
+  display: block !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  transition: background .18s ease, color .18s ease !important;
+}
+.dark-mode #root #secondNavBar .navbar li li ul li>a.item {
+    color: var(--text) !important;
+}
+
+#root #secondNavBar .navbar li li ul li>a.item:hover {
+  background: rgba(0,0,0,0.04) !important;
+}
+.dark-mode #root #secondNavBar .navbar li li ul li>a.item:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+/* Custom Reports dropdown */
+#root #secondNavBar .menuDropdown {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#root #secondNavBar .menuDropdown .title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 9px 12px !important;
+  border-radius: 8px !important;
+  user-select: none !important;
+  cursor: pointer !important;
+  color: var(--text) !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+  transition: background .18s ease, color .18s ease !important;
+}
+.dark-mode #root #secondNavBar .menuDropdown .title {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+
+#root #secondNavBar .menuDropdown .title:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+.dark-mode #root #secondNavBar .menuDropdown .title:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+#root #secondNavBar .navbar .menuDropdown .title {
+  color: var(--text) !important;
+}
+.dark-mode #root #secondNavBar .navbar .menuDropdown .title {
+  color: #fff !important;
+}
+
+
+/* Popover panel (overlay above nav) */
+#root #secondNavBar .menuDropdown .items {
+  display: none !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  z-index: 99999 !important;
+  min-width: 156px !important;
+  max-width: 199px !important;
+  margin-top: 0px !important;
+  padding: 10px !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-2) !important;
+  overflow: auto !important;
+}
+
+#root #secondNavBar .menuDropdown:hover .items,
+#root #secondNavBar .menuDropdown:focus-within .items {
+  display: block !important;
+}
+
+#root #secondNavBar .menuDropdown .items>div>a.item {
+  display: block !important;
+  padding: 10px 12px !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  transition: background .16s ease, color .16s ease !important;
+}
+
+#root #secondNavBar .menuDropdown .items>div>a.item:hover {
+  background: var(--brand-50) !important;
+}
+.dark-mode #root #secondNavBar .menuDropdown .items > div > a.item:hover { background: rgba(255, 255, 255, 0.1) !important; }
+
+
+#root #secondNavBar .menuDropdown .items>div>a.item.active {
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+  box-shadow: inset 0 0 0 1px var(--brand-200) !important;
+}
+
+/* Search inside popover */
+#root #secondNavBar .menuDropdown .items .search {
+  position: relative !important;
+  margin: 2px 2px 10px !important;
+}
+
+#root #secondNavBar .menuDropdown .items .search input {
+  width: 100% !important;
+  padding: 10px 38px 10px 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--soft-border) !important;
+  background: var(--bg-base) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+.dark-mode #root #secondNavBar .menuDropdown .items .search input { background: var(--surface) !important; }
+
+#root #secondNavBar .menuDropdown .items .search .search_ico,
+#root #secondNavBar .menuDropdown .items .search .reset {
+  position: absolute !important;
+  right: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 26px !important;
+  height: 26px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--muted) !important;
+  border-radius: 6px !important;
+}
+
+#root #secondNavBar .menuDropdown .items .search .search_ico {
+  pointer-events: none !important;
+}
+
+/* Helpers & miscellany */
+#root #secondNavBar .navbar .hidden {
+  display: inline-block !important;
+  opacity: .9 !important;
+  font-weight: 700 !important;
+  margin-left: 6px !important;
+  color: var(--muted) !important;
+}
+
+#root #secondNavBar .navbar .divider {
+  height: 1px !important;
+  background: var(--glass-border) !important;
+  margin: 10px 0 !important;
+  border-radius: 1px !important;
+}
+
+#root #secondNavBar .richMarketplaceMenuButton {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  background: var(--brand) !important;
+  border: 0 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.35) !important;
+}
+
+#root #secondNavBar .richMarketplaceMenuButton .intro {
+  margin: 0 0 8px 0 !important;
+  color: var(--brand-100) !important;
+}
+
+#root #secondNavBar .richMarketplaceMenuButton .cta .btn {
+  border-radius: 10px !important;
+}
+
+#root #secondNavBar .richMarketplaceMenuButton .cta .btn:hover,
+#root #secondNavBar .richMarketplaceMenuButton .cta .btn:focus-visible {
+  background: var(--brand-solid) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.35) !important;
+}
+
+/* Responsive: left nav & flyouts */
+@media (max-width:640px) {
+  #root #secondNavBar .navbar {
+    gap: 6px !important;
+    padding: 8px !important;
+  }
+
+  #root #secondNavBar .navbar li li ul {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 4px 0 !important;
+    display: none !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  #root #secondNavBar .navbar li li.open>ul,
+  #root #secondNavBar .navbar li li:hover>ul {
+    display: block !important;
+  }
+
+  #root #secondNavBar .menuDropdown .items {
+    position: static !important;
+    box-shadow: none !important;
+    border: 1px solid var(--soft-border) !important;
+    margin-top: 6px !important;
+  }
+}
+
+#root #secondNavBar .navbar>li>ul li.active>.menuDropdown,
+#root #secondNavBar .navbar>li>ul li.active>.item {
+  background-color: transparent;
+}
+
+#root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li.active>a.item {
+  margin: 9px 0px 9px 0px !important;
+}
+
+
+/* ====================================================================================
+   5) CARDS / WIDGETS (Glass Facelift) & TABLES (Original Style)
+   ==================================================================================== */
+
+/* Cards */
+.card,
+.widget {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 0 !important;
+  margin: 14px 0 !important;
+  box-shadow: var(--shadow-1) !important;
+  transition: box-shadow .2s ease, transform .1s ease, border-color .2s ease, backdrop-filter .2s ease !important;
+}
+
+.widget .widgetTop {
+  padding: 12px 16px !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  background: transparent !important;
+  border-top-left-radius: var(--radius-lg) !important;
+  border-top-right-radius: var(--radius-lg) !important;
+}
+.dark-mode .widget .widgetTop {
+  color: var(--text) !important;
+  background: transparent !important;
+}
+
+.widget .dataTableVizEvolution {
+  padding-top: 10px;
+}
+
+.widget .widgetContent .card .card-content {
+  padding: 20px !important;
+}
+
+.card .card-content .card-title {
+  margin-bottom: 20px !important;
+}
+.card .card-action:last-child {
+    border-radius: 14px;
+}
+
+
+/* This is a TABLE container, so it's safe to apply glass */
+.tableCard {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow-1) !important;
+  padding: 6px 6px 10px !important;
+  overflow-x: auto !important;
+}
+
+
+/* DataTable base - STYLES FROM ORIGINAL SOURCE, UNTOUCHED */
+table.dataTable {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: .95rem !important;
+  color: var(--text) !important;
+  background: var(--surface) !important;
+  table-layout: auto !important;
+  border: 1px solid var(--soft-border) !important;
+  border-left: 1px solid var(--soft-border) !important;
+}
+
+table.dataTable thead th {
+  padding: 10px 12px !important;
+  font-weight: 600 !important;
+  font-size: .88rem !important;
+  line-height: 1.25 !important;
+  vertical-align: top !important;
+  text-align: left !important;
+}
+
+table.dataTable thead th .thDIV {
+  white-space: normal !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+table.dataTable thead th:first-child .thDIV {
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+
+table.dataTable thead tr th:not(.label) {
+  text-align: right !important;
+}
+
+table.dataTable tbody tr {
+  background: transparent !important;
+  transition: background 160ms ease, box-shadow 160ms ease !important;
+}
+
+.dataTableScroller .dataTable tbody tr:nth-child(even) td,
+.dataTableScroller .dataTable tbody tr:nth-child(even) td.label,
+.dataTableScroller .dataTable tbody tr:nth-child(even) td.column {
+  background-color: var(--bg-base) !important;
+}
+
+table.dataTable tbody td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--soft-border) !important;
+  vertical-align: middle !important;
+  color: var(--text) !important;
+  white-space: nowrap !important;
+}
+
+table.dataTable tbody td:first-child {
+  padding-left: 18px !important;
+}
+
+table.dataTable tbody td:last-child {
+  padding-right: 18px !important;
+  text-align: right !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+table.dataTable tbody tr:hover {
+  background: var(--brand-50) !important;
+  box-shadow: inset 0 -1px 0 var(--brand-100), inset 0 1px 0 var(--brand-100) !important;
+}
+
+table.dataTable tbody tr.selected {
+  background: var(--brand-100) !important;
+}
+
+table.dataTable td a {
+  color: var(--brand-solid) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+table.dataTable td a:hover {
+  text-decoration: underline !important;
+}
+
+table.dataTable td.checkbox,
+table.dataTable th.checkbox {
+  width: 44px !important;
+  text-align: center !important;
+}
+
+table.dataTable td.checkbox input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: var(--brand-solid) !important;
+}
+
+.table-pill {
+  display: inline-block !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  font-size: .82rem !important;
+  line-height: 1 !important;
+}
+
+.table-pill.paid {
+  background: var(--badge-neutral-bg) !important;
+  color: var(--badge-neutral) !important;
+}
+
+.table-pill.pending {
+  background: var(--badge-up-bg) !important;
+  color: var(--ok) !important;
+}
+
+.table-pill.unpaid {
+  background: var(--badge-down-bg) !important;
+  color: var(--badge-down) !important;
+}
+
+table.dataTable.compact thead th {
+  padding: 10px 12px !important;
+  font-size: .88rem !important;
+}
+
+table.dataTable.compact tbody td {
+  padding: 10px 12px !important;
+}
+
+.dark-mode table.dataTable thead th {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid var(--soft-border) !important;
+}
+
+.dark-mode table.dataTable tbody td {
+  border-bottom: 1px solid var(--soft-border) !important;
+}
+
+.dark-mode table.dataTable tbody tr:hover {
+  background: #334155 !important;
+}
+
+/* Non-label cells keep nowrap */
+table.dataTable tbody td:not(.label) {
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  min-width: 0 !important;
+}
+
+/* Sticky header first cell */
+table.dataTable thead th:first-child {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 11 !important;
+  background: var(--surface) !important;
+  border-right: 1px solid var(--soft-border) !important;
+}
+
+.theWidgetContent .card .card-content table.dataTable th:first-child,
+table.dataTable th:first-child,
+table.subDataTable th:first-child {
+  padding-left: 20px;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 11 !important;
+  background: var(--surface) !important;
+  border-right: 1px solid var(--soft-border) !important;
+  border-top: 1px solid var(--soft-border) !important;
+  border-left: 1px solid var(--soft-border) !important;
+}
+
+/* Sticky label cells (entire first column) */
+table.dataTable tbody td.label {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 7 !important;
+  width: max-content !important;
+  min-width: 120px !important;
+  max-width: 300px !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  vertical-align: middle !important;
+  padding-left: 18px !important;
+  overflow: visible !important;
+  background: var(--surface) !important;
+  border-right: 1px solid var(--soft-border) !important;
+  user-select: text !important;
+}
+
+table.dataTable tbody td.label .title {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
+  max-height: calc(1.25em * 2) !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
+  min-width: 0 !important;
+  cursor: default !important;
+}
+
+table.dataTable tbody td.label .title a,
+table.dataTable tbody td.label .title span,
+table.dataTable tbody td.label .title * {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* Tooltip (JS sets data-full) */
+table.dataTable tbody td.label .title::after {
+  content: attr(data-full);
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  z-index: 9500;
+  min-width: 160px;
+  max-width: min(62vw, 640px);
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  padding: 8px 10px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--soft-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-2);
+  line-height: 1.3;
+  font-size: .92rem;
+  pointer-events: auto;
+  opacity: 0;
+  transform-origin: left top;
+  transition: opacity 120ms ease, transform 120ms ease;
+  transform: translateY(-4px);
+}
+
+table.dataTable tbody td.label:hover .title::after,
+table.dataTable tbody td.label .title:focus::after,
+table.dataTable tbody td.label .title:focus-within::after {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width:520px) {
+  table.dataTable tbody td.label {
+    max-width: 220px !important;
+  }
+  table.dataTable tbody td.label .title::after {
+    max-width: 92vw;
+  }
+}
+
+/* Align numeric column next to label */
+table.dataTable tr:not(.subDataTableContainer) td.label+td.column {
+  text-align: right !important;
+}
+
+table.dataTable td.column {
+  text-align: right !important;
+}
+
+/* SubDataTable */
+.dataTable.subDataTable {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  font-size: 13px !important;
+  border: 1px solid var(--soft-border) !important;
+}
+
+.dataTable.subDataTable th,
+.dataTable.subDataTable td {
+  padding: 8px 10px !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  max-width: 300px !important;
+}
+
+.dataTable.subDataTable th {
+  background-color: var(--bg-base) !important;
+  font-weight: 600 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 2 !important;
+}
+
+.dataTable.subDataTable th.first,
+.dataTable.subDataTable td.first {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 3 !important;
+  background-color: var(--surface) !important;
+  min-width: 150px !important;
+  max-width: 300px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  border-right: none !important;
+}
+
+.dataTable.subDataTable tbody tr:hover {
+  background-color: var(--brand-50) !important;
+}
+
+table.dataTable tr.subDataTable td.label span.label {
+  overflow: visible;
+}
+
+.theWidgetContent .card .card-content table.dataTable td:first-child,
+table.dataTable td:first-child,
+table.subDataTable td:first-child {
+  overflow: clip !important;
+}
+
+.insightsDataTable tr:not(.subDataTableContainer) .grown {
+  color: var(--ok) !important;
+}
+
+.insightsDataTable tr:not(.subDataTableContainer) .notGrown {
+  color: #dc2626 !important; /* Red-600 */
+}
+
+
+.customReportsHigherDimensions table.dataTable td {
+  width: auto !important;
+}
+
+
+.insightsDataTable .controls {
+    padding: 5px 13px 0 !important;
+}
+
+.insightsDataTable {
+    border: solid 1px var(--soft-border) !important;
+}
+
+/* ====================================================================================
+   6) SPARKLINES & JQPLOT HARDENING (crisp rendering; no fuzzy resampling)
+   ==================================================================================== */
+
+/* Media rendering — keep pixels 1:1 */
+div.sparkline img,
+.sparkline img,
+.sparkline svg,
+.sparkline canvas {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 52px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: optimizeQuality !important;
+  -ms-interpolation-mode: bicubic;
+  backface-visibility: hidden !important;
+  transform: translateZ(0) !important;
+}
+
+.sparkline svg {
+  shape-rendering: geometricPrecision !important;
+  text-rendering: geometricPrecision !important;
+}
+
+/* Shell */
+.theWidgetContent .sparkline,
+.sparkline,
+div.sparkline.linked,
+.sparkline-wrapper {
+  display: grid !important;
+  align-items: start;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto auto auto !important;
+  grid-template-areas: "title chip" "value value" "chart chart" !important;
+  gap: 10px 12px !important;
+  padding: 14px 16px !important;
+  border-radius: 24px !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(calc(var(--glass-blur)/2)) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur)/2)) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-1) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease, transform .06s ease !important;
+  margin: 5px 0px;
+}
+.dark-mode .theWidgetContent .sparkline {
+  background: var(--glass-bg) !important;
+}
+
+.theWidgetContent .sparkline:hover {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: var(--shadow-2) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  transform: translateY(-1px) !important;
+}
+.dark-mode .theWidgetContent .sparkline:hover {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+
+.theWidgetContent .sparkline:active {
+  transform: none !important;
+}
+
+.theWidgetContent .sparkline:focus,
+.theWidgetContent .sparkline:focus-visible,
+.theWidgetContent .sparkline:focus-within {
+  outline: 3px solid hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.3) !important;
+  outline-offset: 2px !important;
+}
+
+.theWidgetContent .sparkline>div:last-child {
+  display: contents !important;
+}
+
+/* Areas */
+.theWidgetContent .sparkline>div:first-child {
+  grid-area: chart !important;
+  align-self: end !important;
+  width: 100% !important;
+  padding-top: 10px !important;
+  border-top: 1px dashed var(--glass-border) !important;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+div.sparkline .label,
+.sparkline .label {
+  grid-area: title !important;
+  align-self: center !important;
+  min-width: 0 !important;
+  font-size: .95rem !important;
+  font-weight: 600 !important;
+  color: var(--muted) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.theWidgetContent .sparkline .sparkline-metrics {
+  align-self: center !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.theWidgetContent .sparkline .sparkline-metrics strong {
+  font-weight: 800 !important;
+  font-size: clamp(20px, 3.2vw, 28px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: .2px !important;
+  color: var(--text) !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+}
+
+.theWidgetContent .sparkline .metricEvolution {
+  grid-area: chip !important;
+  justify-self: end !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 12px !important;
+  border-radius: 9999px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  line-height: 1.2 !important;
+  color: var(--text) !important;
+  white-space: nowrap !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05) !important;
+}
+
+.theWidgetContent .sparkline .metricEvolution img {
+  width: 9px !important;
+  height: 9px !important;
+  display: inline-block !important;
+}
+
+.theWidgetContent .sparkline .metricEvolution .negative-evolution {
+  color: #dc2626 !important; /* Red-600 */
+}
+
+.theWidgetContent .sparkline .metricEvolution .neutral-evolution {
+  color: #64748b !important; /* Slate-500 */
+}
+
+/* Small screens */
+@media (max-width:520px) {
+  .theWidgetContent .sparkline {
+    gap: 8px 10px !important;
+    padding: 12px !important;
+  }
+
+  .theWidgetContent .sparkline .sparkline-metrics strong {
+    font-size: clamp(18px, 6.2vw, 24px) !important;
+  }
+
+  .theWidgetContent .sparkline>div:first-child {
+    padding-top: 8px !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce) {
+  .theWidgetContent .sparkline {
+    transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease !important;
+  }
+
+  .theWidgetContent .sparkline:hover,
+  .theWidgetContent .sparkline:active {
+    transform: none !important;
+  }
+}
+
+/* jqPlot hardening */
+.jqplot-graph {
+  display: block !important;
+  position: relative !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  border-radius: 12px !important;
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-1) !important;
+  padding: 8px 8px 6px !important;
+}
+
+.jqplot-graph>.piwik-graph,
+.jqplot-graph .jqplot-target {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  width: -webkit-fill-available !important;
+}
+
+.jqplot-graph canvas {
+  max-width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+}
+
+.jqplot-target {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.jqplot-grid-canvas {
+  opacity: .9 !important;
+}
+
+.jqplot-xaxis,
+.jqplot-yaxis {
+  font-size: 12px !important;
+  color: var(--muted) !important;
+}
+
+/* Tooltip */
+.jqplot-highlighter-tooltip {
+  padding: 8px 10px !important;
+  border-radius: 10px !important;
+  background: var(--text) !important;
+  color: var(--bg-base) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: var(--shadow-2) !important;
+  font-weight: 700 !important;
+}
+
+.jqplot-highlighter-tooltip:before {
+  content: "";
+  position: absolute;
+  inset: auto 0 -6px 0;
+  margin: auto;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: var(--text);
+  border-left: 1px solid var(--soft-border);
+  border-bottom: 1px solid var(--soft-border);
+}
+
+.jqplot-legend {
+  background: var(--surface) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: var(--shadow-1) !important;
+}
+
+.jqplot-series-shadowCanvas {
+  display: none !important;
+}
+
+.jqplot-seriespicker a {
+  display: inline-flex !important;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px !important;
+  background: var(--bg-base) !important;
+  color: var(--brand-solid) !important;
+  font-weight: 900 !important;
+  transition: background .18s ease !important;
+}
+.dark-mode .jqplot-seriespicker a { background: var(--surface) !important; }
+
+.jqplot-seriespicker a:hover {
+  background: var(--brand-100) !important;
+}
+
+.rowevolution table.metrics td.sparkline {
+  height: 50px !important;
+  width: 120px !important;
+}
+
+
+/* ====================================================================================
+   7) BUTTON SYSTEM & FORM ELEMENTS
+   ==================================================================================== */
+#root button,
+#root [type="button"],
+#root [type="reset"],
+#root [type="submit"],
+#root .btn,
+#root a.btn {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 38px !important;
+  padding: 9px 16px !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid transparent !important;
+  font: 700 15px/1.25 "Inter", system-ui, -apple-system, "Segoe UI", Arial !important;
+  letter-spacing: .1px !important;
+  text-transform: none !important;
+  background: var(--brand) !important;
+  color: #fff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06), inset 0 1px 1px rgba(255,255,255,0.1) !important;
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .06s ease !important;
+  cursor: pointer !important;
+}
+#root .btn:hover,
+#root button:hover,
+#root [type="submit"]:hover,
+#root [type="button"]:hover,
+#root [type="reset"]:hover,
+#root a.btn:hover {
+  background: var(--brand-600) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08) !important;
+  transform: translateY(-1px);
+}
+#root .btn:active,
+#root button:active,
+#root [type="submit"]:active,
+#root [type="button"]:active,
+#root [type="reset"]:active,
+#root a.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08) inset !important;
+}
+#root .btn:focus-visible,
+#root button:focus-visible,
+#root [type="submit"]:focus-visible,
+#root [type="button"]:focus-visible,
+#root [type="reset"]:focus-visible,
+#root a.btn:focus-visible {
+  outline: 0 !important;
+  box-shadow: var(--focus-ring) !important;
+}
+#root .btn:disabled,
+#root button:disabled,
+#root [type="submit"]:disabled,
+#root [type="button"]:disabled,
+#root [type="reset"]:disabled,
+#root .btn.disabled,
+#root a.btn.disabled {
+  background: var(--soft-border) !important;
+  color: var(--muted) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+#root .btn i,
+#root .btn svg,
+#root button i,
+#root button svg,
+#root a.btn i,
+#root a.btn svg {
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+  flex: 0 0 18px;
+}
+#root .btn--secondary,
+#root .btn.secondary {
+  background: var(--glass-bg) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05) !important;
+  backdrop-filter: blur(8px);
+}
+#root .btn--secondary:hover,
+#root .btn.secondary:hover {
+  border-color: rgba(255,255,255,0.7) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .08) !important;
+}
+.dark-mode #root .btn--secondary:hover,
+.dark-mode #root .btn.secondary:hover {
+  border-color: rgba(255,255,255,0.2) !important;
+  background: rgba(30, 41, 59, 0.7) !important;
+}
+#root .btn--ghost,
+#root .btn.outline,
+#root .btn-flat {
+  background: transparent !important;
+  color: var(--brand-solid) !important;
+  border: 1px solid var(--brand-300) !important;
+  box-shadow: none !important;
+}
+#root .btn--ghost:hover,
+#root .btn.outline:hover,
+#root .btn-flat:hover {
+  background: var(--brand-50) !important;
+  border-color: var(--brand-400) !important;
+}
+#root .btn--danger {
+  background: #dc2626 !important;
+  border-color: transparent !important;
+}
+#root .btn--danger:hover {
+  background: #b91c1c !important;
+}
+#root .btn--sm {
+  min-height: 32px !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  border-radius: var(--radius-sm) !important;
+}
+#root .btn--lg {
+  min-height: 44px !important;
+  padding: 12px 18px !important;
+  font-size: 16px !important;
+  border-radius: var(--radius-lg) !important;
+}
+#root .btn--icon {
+  width: 38px !important;
+  min-width: 38px !important;
+  padding: 0 !important;
+}
+#root a.dataTableAction,
+#root .dropdown-button.dropdownConfigureIcon,
+#root .dropdownConfigureIcon,
+#root .icon-button,
+#root .tableActions a,
+#root .tableActions button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  min-height: 32px !important;
+  padding: 6px 10px !important;
+  border-radius: 12px !important;
+  white-space: nowrap !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05) !important;
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease, transform .06s ease !important;
+  width: auto !important;
+}
+#root a.dataTableAction:hover,
+#root .dropdown-button.dropdownConfigureIcon:hover,
+#root .dropdownConfigureIcon:hover,
+#root .icon-button:hover,
+#root .tableActions a:hover,
+#root .tableActions button:hover {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .08) !important;
+  transform: translateY(-1px);
+}
+#root a.dataTableAction:active,
+#root .dropdown-button.dropdownConfigureIcon:active,
+#root .dropdownConfigureIcon:active,
+#root .icon-button:active,
+#root .tableActions a:active,
+#root .tableActions button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08) inset !important;
+}
+#root a.dataTableAction:focus-visible,
+#root .dropdown-button.dropdownConfigureIcon:focus-visible,
+#root .dropdownConfigureIcon:focus-visible,
+#root .icon-button:focus-visible,
+#root .tableActions a:focus-visible,
+#root .tableActions button:focus-visible {
+  outline: 0 !important;
+  box-shadow: var(--focus-ring) !important;
+}
+#root a.dataTableAction i,
+#root .dropdownConfigureIcon i,
+#root .tableActions a i,
+#root .tableActions button i,
+#root a.dataTableAction svg,
+#root .dropdownConfigureIcon svg,
+#root .tableActions a svg,
+#root .tableActions button svg {
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  pointer-events: none;
+  color: currentColor !important;
+  display: block;
+  flex: 0 0 16px;
+}
+#root a.dataTableAction.highlighted,
+#root .dropdown-button.dropdownConfigureIcon.dataTableAction.highlighted,
+#root .dropdownConfigureIcon.highlighted {
+  background: var(--brand-50) !important;
+  border-color: var(--brand-200) !important;
+  color: var(--brand-solid) !important;
+  box-shadow: 0 1px 2px hsla(var(--brand-h), var(--brand-s), var(--brand-l), .12) !important;
+}
+#root a.dataTableAction.highlighted:hover,
+#root .dropdown-button.dropdownConfigureIcon.dataTableAction.highlighted:hover,
+#root .dropdownConfigureIcon.highlighted:hover {
+  background: var(--brand-100) !important;
+  border-color: var(--brand-300) !important;
+}
+#root .tableActions,
+#root .widget .tableActions,
+#root .widgetTop .tableActions,
+#root .theWidgetContent .tableActions,
+#root .jqplot-graph .tableActions,
+#root .dataTableActions,
+#root .evolution-annotations-toggle,
+#root .evolution-legend-actions,
+#root .theWidgetContent .widgetTop .actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+#root a.dataTableAction:has(svg):not(:has(span, small, em, strong)),
+#root a.dataTableAction:has(i):not(:has(span, small, em, strong)),
+#root .dropdownConfigureIcon:has(svg):not(:has(span, small, em, strong)),
+#root .dropdownConfigureIcon:has(i):not(:has(span, small, em, strong)),
+#root .tableActions a:has(svg):not(:has(span, small, em, strong)),
+#root .tableActions button:has(svg):not(:has(span, small, em, strong)) {
+  width: 32px !important;
+  min-width: 32px !important;
+  padding: 0 !important;
+}
+#root a.dataTableAction span,
+#root .dropdownConfigureIcon span,
+#root .tableActions a span,
+#root .tableActions button span {
+  line-height: 1 !important;
+  display: contents;
+}
+.dark-mode #root a.dataTableAction,
+.dark-mode #root .dropdownConfigureIcon,
+.dark-mode #root .tableActions a,
+.dark-mode #root .tableActions button {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--soft-border) !important;
+  box-shadow: none !important;
+}
+.dark-mode #root a.dataTableAction.highlighted,
+.dark-mode #root .dropdownConfigureIcon.highlighted {
+  background: hsla(var(--brand-h), var(--brand-s), calc(var(--brand-l) - 10%), 0.15) !important;
+  border-color: var(--brand-400) !important;
+  color: var(--brand-100) !important;
+}
+.searchAction {
+  width: auto !important;
+}
+#root .tableActions .searchAction,
+#root .dataTableActions .searchAction {
+  position: relative !important;
+  display: inline-grid !important;
+  grid-template-columns: 24px 1fr 24px !important;
+  align-items: center !important;
+  height: 34px !important;
+  padding: 0 6px !important;
+  border-radius: 12px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05) !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+  transition: border-color .16s ease, box-shadow .16s ease !important;
+}
+#root .tableActions .searchAction:hover,
+#root .dataTableActions .searchAction:hover {
+  border-color: var(--border) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08) !important;
+}
+#root .tableActions .searchAction:focus-within,
+#root .dataTableActions .searchAction:focus-within {
+  box-shadow: var(--focus-ring) !important;
+}
+#root .tableActions .searchAction .icon-search,
+#root .dataTableActions .searchAction .icon-search {
+  grid-column: 1 !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  color: var(--muted) !important;
+  opacity: .75 !important;
+  line-height: 1 !important;
+}
+#root .tableActions .searchAction .dataTableSearchInput,
+#root .dataTableActions .searchAction .dataTableSearchInput {
+  grid-column: 2 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  line-height: 1.2 !important;
+  font: 600 14px/1.2 "Inter", system-ui, -apple-system, "Segoe UI", Arial !important;
+  color: var(--text) !important;
+}
+#root .tableActions .searchAction .dataTableSearchInput::placeholder,
+#root .dataTableActions .searchAction .dataTableSearchInput::placeholder {
+  color: var(--muted) !important;
+  opacity: .8 !important;
+}
+#root .tableActions .searchAction .icon-close,
+#root .dataTableActions .searchAction .icon-close {
+  grid-column: 3 !important;
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  color: var(--muted) !important;
+  transition: background .15s ease, color .15s ease !important;
+  line-height: 1 !important;
+}
+#root .tableActions .searchAction .icon-close:hover,
+#root .dataTableActions .searchAction .icon-close:hover {
+  background: var(--soft-border) !important;
+  color: var(--text) !important;
+}
+#root .tableActions .searchAction .icon-close:before,
+#root .dataTableActions .searchAction .icon-close:before {
+  content: "\e60a";
+  font-family: 'matomo' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  speak: none !important;
+  font-size: 14px !important;
+}
+#root .tableActions .searchAction.searchActive .dataTableSearchInput,
+#root .dataTableActions .searchAction.searchActive .dataTableSearchInput {
+  padding: 0 4px !important;
+}
+#root a.searchAction.dataTableAction {
+  position: relative !important;
+  grid-template-columns: 24px 1fr 24px !important;
+  align-items: center !important;
+  height: 34px !important;
+  padding: 0 6px !important;
+  gap: 6px !important;
+  border-radius: 12px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05) !important;
+  text-decoration: none !important;
+  width: auto !important;
+}
+#root a.searchAction.dataTableAction .icon-search {
+  font-size: 15px !important;
+  color: var(--muted) !important;
+  opacity: .75 !important;
+  line-height: 1 !important;
+}
+#root a.searchAction.dataTableAction .dataTableSearchInput {
+  grid-column: 2 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  line-height: 1.2 !important;
+  font: 600 14px/1.2 "Inter", system-ui, -apple-system, "Segoe UI", Arial !important;
+  color: var(--text) !important;
+}
+#root a.searchAction.dataTableAction .dataTableSearchInput::placeholder {
+  color: var(--muted) !important;
+  opacity: .8 !important;
+}
+.searchAction.searchActive .dataTableSearchInput {
+  padding-left: 0 !important;
+}
+#root a.searchAction.dataTableAction .icon-close {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  color: var(--muted) !important;
+  line-height: 1 !important;
+  transition: background .15s ease, color .15s ease !important;
+  cursor: pointer !important;
+}
+#root a.searchAction.dataTableAction .icon-close:hover {
+  background: var(--soft-border) !important;
+  color: var(--text) !important;
+}
+#root a.searchAction.dataTableAction .icon-close:before {
+  content: "\e60a";
+  font-family: "matomo" !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  speak: none !important;
+}
+#root a.searchAction.dataTableAction:hover {
+  border-color: var(--border) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08) !important;
+}
+#root a.searchAction.dataTableAction:focus-within {
+  box-shadow: var(--focus-ring) !important;
+}
+
+/* ====================================================================================
+   8) INPUTS & FORM ELEMENTS
+   ==================================================================================== */
+input:not([type]):not(.browser-default),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=month]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+  display: inline-block !important;
+  padding: 10px 10px !important;
+  padding-right: 23px !important;
+  font-size: .95rem !important;
+  line-height: 1.25 !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow-1) !important;
+  transition: border-color 140ms ease, box-shadow 160ms ease, transform 120ms ease !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  outline: none !important;
+}
+.limitSelection>div .select-wrapper input.select-dropdown {
+  padding-right: 28px !important;
+  color: var(--text) !important;
+}
+textarea.materialize-textarea {
+  min-height: 110px !important;
+  resize: vertical !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted) !important;
+  opacity: .95 !important;
+  transition: opacity 120ms ease !important;
+}
+input:not(:disabled):hover,
+textarea:not(:disabled):hover {
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-2) !important;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--brand-solid) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+input[disabled],
+textarea[disabled],
+input[readonly],
+textarea[readonly] {
+  opacity: .66 !important;
+  background: var(--bg-base) !important;
+  border-color: var(--soft-border) !important;
+  box-shadow: none !important;
+}
+input.is-invalid,
+textarea.is-invalid,
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #dc2626 !important; /* Red-600 */
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.14) !important;
+}
+input.is-valid,
+textarea.is-valid {
+  border-color: var(--ok) !important;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14) !important;
+}
+.input-help,
+.input-error,
+.input-hint {
+  display: block !important;
+  font-size: .85rem !important;
+  margin-top: 6px !important;
+  color: var(--muted) !important;
+}
+.input-error {
+  color: #dc2626 !important; /* Red-600 */
+  font-weight: 600 !important;
+}
+.input-success {
+  color: var(--ok) !important;
+}
+.input-group {
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+}
+.input-group .input-prefix,
+.input-group .input-suffix {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 10px !important;
+  min-height: 40px !important;
+  font-size: .95rem !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg-base) !important;
+  color: var(--muted) !important;
+  border-radius: 8px !important;
+}
+.input-group .input-prefix {
+  border-right: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.input-group .input-suffix {
+  border-left: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.input-group input,
+.input-group textarea {
+  border-radius: 8px !important;
+  margin: 0 !important;
+  border-left: 1px solid var(--border) !important;
+  border-right: 1px solid var(--border) !important;
+}
+.input-sm {
+  padding: 6px 8px !important;
+  font-size: .88rem !important;
+  border-radius: 8px !important;
+}
+.input-lg {
+  padding: 14px 16px !important;
+  font-size: 1rem !important;
+  border-radius: 12px !important;
+}
+.input-with-clear {
+  position: relative !important;
+  display: block !important;
+}
+.input-with-clear .input-clear {
+  position: absolute !important;
+  right: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: transparent !important;
+  border: 0 !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  color: var(--muted) !important;
+  border-radius: 6px !important;
+}
+.input-with-clear .input-clear:hover {
+  background: var(--soft-border) !important;
+  color: var(--brand-solid) !important;
+}
+label.floating {
+  position: relative !important;
+  display: block !important;
+}
+label.floating input,
+label.floating textarea {
+  padding-top: 18px !important;
+  padding-bottom: 10px !important;
+}
+label.floating .label {
+  position: absolute !important;
+  left: 12px !important;
+  top: 10px !important;
+  pointer-events: none !important;
+  transition: transform 140ms ease, font-size 140ms ease, opacity 140ms ease !important;
+  color: var(--muted) !important;
+  font-size: .95rem !important;
+  background: transparent !important;
+  padding: 0 4px !important;
+}
+label.floating input:focus+.label,
+label.floating input:not(:placeholder-shown)+.label,
+label.floating textarea:focus+.label,
+label.floating textarea:not(:placeholder-shown)+.label {
+  transform: translateY(-130%) scale(0.86) !important;
+  transform-origin: left top !important;
+  color: var(--brand-600) !important;
+  opacity: 1 !important;
+}
+
+@media (max-width:720px) {
+  .input-group {
+    flex-direction: column !important;
+  }
+  .input-group .input-prefix,
+  .input-group .input-suffix {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding-left: 12px !important;
+  }
+  .input-group input,
+  .input-group textarea {
+    width: 100% !important;
+  }
+}
+
+.dataTableSearchInput {
+  color: var(--text) !important;
+  min-height: 33px !important
+}
+.input-field>label {
+  color: var(--muted) !important;
+  padding-left: 15px !important;
+}
+.select-wrapper {
+  position: relative !important;
+  display: contents !important;
+}
+.input-field>label:not(.label-icon).active {
+  margin: -10px !important;
+}
+.limitSelection>div .select-wrapper svg.caret {
+  right: 5px !important;
+  top: 0 !important;
+}
+.select-wrapper .caret {
+  right: 12px !important;
+  top: -7px !important;
+}
+.searchAction.searchActive .dataTableSearchInput {
+  padding-left: 33px !important;
+}
+.searchAction {
+  padding-left: 0 !important;
+}
+.reporting-page .isFirstWidgetInPage .card {
+  width: auto;
+}
+
+
+/* ====================================================================================
+   9) REPORTS-BY-DIMENSION (inner menu) + MISC/HELPERS
+   ==================================================================================== */
+.reportsByDimensionView {
+  float: left !important;
+  width: 100% !important;
+  padding: 12px !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow-2) !important;
+  color: var(--text) !important;
+}
+.dark-mode .reportsByDimensionView {
+    color: var(--text) !important;
+}
+
+#content:not(.admin) .reportsByDimensionView .entityList,
+.widget .reportsByDimensionView .entityList,
+.ui-widget .reportsByDimensionView .entityList {
+  margin-left: 0 !important;
+}
+.reportsByDimensionView .entityList ul {
+  list-style: none !important;
+  padding: 6px !important;
+  max-height: 440px !important;
+  overflow: auto !important;
+}
+.reportsByDimensionView .entityList ul::-webkit-scrollbar {
+  width: 8px !important;
+}
+.reportsByDimensionView .entityList ul::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px !important;
+}
+.dark-mode .reportsByDimensionView .entityList ul::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+.reportsByDimensionView .entityList ul::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-radius: 8px !important;
+}
+.dark-mode .reportsByDimensionView .entityList ul::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.reportsByDimensionView .entityList ul li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 6px 0 !important;
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 80ms ease, box-shadow 150ms ease !important;
+}
+.reportsByDimensionView .entityList ul li .dimension {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  letter-spacing: .01em !important;
+  line-height: 1.25 !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.reportsByDimensionView .entityList ul li .meta {
+  color: var(--muted) !important;
+  font-size: .88rem !important;
+}
+.reportsByDimensionView .entityList ul li:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.dark-mode .reportsByDimensionView .entityList ul li:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.reportsByDimensionView .entityList ul li:hover .dimension {
+  color: var(--text) !important;
+}
+.reportsByDimensionView .entityList ul li:focus-within {
+  box-shadow: var(--focus-ring) !important;
+}
+.reportsByDimensionView .entityList ul li.activeDimension {
+  background: var(--brand) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 8px 18px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.38) !important;
+}
+.reportsByDimensionView .entityList ul li.activeDimension .dimension {
+  color: #fff !important;
+}
+.reportsByDimensionView .entityList ul li.activeDimension .meta {
+  color: var(--brand-100) !important;
+}
+.reportsByDimensionView .entityList .badge,
+.reportsByDimensionView .entityList .count {
+  margin-left: auto !important;
+  font-weight: 700 !important;
+  font-size: .78rem !important;
+  padding: 4px 8px !important;
+  border-radius: 999px !important;
+  background: var(--soft-border) !important;
+  color: var(--muted) !important;
+}
+.dark-mode .reportsByDimensionView .entityList .badge,
+.dark-mode .reportsByDimensionView .entityList .count {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: var(--muted) !important;
+}
+
+.reportsByDimensionView .entityList ul li a {
+  color: inherit !important;
+  text-decoration: none !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+.reportsByDimensionView .entityList ul li a:hover {
+  text-decoration: none !important;
+}
+.reportsByDimensionView.compact .entityList ul li {
+  padding: 8px 10px !important;
+}
+.reportsByDimensionView .dimensionCategory {
+  color: var(--text) !important;
+  font-weight: bolder !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  padding: 10px !important;
+}
+.dark-mode .reportsByDimensionView .dimensionCategory {
+    color: #fff !important;
+    border: 1px solid var(--border) !important;
+}
+
+
+/* Helpers */
+.muted {
+  color: var(--muted) !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.flex {
+  display: flex !important;
+}
+.flex-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+.segment-element {
+  padding: 18px 12px !important;
+  border-radius: 10px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: var(--shadow-1) !important;
+}
+#dashboard #dashboardWidgetsArea>.col>.sortable {
+  padding: 0 0 1px 0 !important;
+}
+.row .col.l4 {
+  width: -webkit-fill-available !important;
+}
+.marketplace .card-holder .card {
+  width: 33% !important;
+}
+
+
+/* ====================================================================================
+   10) RESPONSIVE / REDUCED-MOTION tweaks
+   ==================================================================================== */
+@media (max-width: 992px) {
+  #root #secondNavBar {
+    position: absolute !important;
+    left: -9999px !important;
+    top: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  #content,
+  #root #content,
+  #root .viewContainer,
+  #root .reportContent,
+  #root #main {
+    margin-left: 0 !important;
+  }
+  .activateLeftMenu,
+  .activateTopMenu {
+    display: inline-flex !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ====================================================================================
+   11) OVERRIDES, FACELIFT PATCH
+   ==================================================================================== */
+#root #secondNavBar .navbar,
+#root #secondNavBar {
+  overflow: visible !important;
+}
+
+.system.notification .close {
+  position: relative;
+  top: -10px;
+  float: inline-end;
+}
+
+/* -----------------------------
+   FACELIFT PATCH & A11Y POLISH
+   ----------------------------- */
+:root {
+  --text-soft: color-mix(in srgb, var(--text) 82%, transparent) !important;
+  --focus-ring-dark: 0 0 0 3px rgba(255, 255, 255, 0.22) !important;
+}
+.dark-mode :focus-visible {
+  box-shadow: var(--focus-ring-dark) !important;
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1360px !important;
+  }
+}
+.breadcrumb {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin: 12px 0 4px !important;
+  padding: 0 !important;
+  list-style: none !important;
+  color: var(--muted) !important;
+  font-weight: 600 !important;
+}
+.breadcrumb a {
+  color: inherit !important;
+  text-decoration: none !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+}
+.breadcrumb a:hover {
+  background: var(--soft-border) !important;
+  color: var(--text) !important;
+}
+.breadcrumb .current {
+  color: var(--text) !important;
+  font-weight: 800 !important;
+}
+.page-meta {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  color: var(--muted) !important;
+  font-size: .92rem !important;
+  margin: 8px 0 0 !important;
+}
+#root nav .nav-wrapper {
+  gap: 16px !important;
+}
+#root nav ul.right>li>a {
+  border: 1px solid transparent !important;
+}
+#root nav ul.right>li>a:focus-visible {
+  box-shadow: var(--focus-ring) !important;
+}
+#root nav ul.right>li.active>a {
+  background: var(--brand) !important;
+}
+#logo img {
+  transform: translateY(1px) !important;
+}
+#root #secondNavBar .navbar>.menuTab>.item {
+  box-shadow: none !important;
+}
+#root #secondNavBar .navbar>.menuTab.active>.item {
+  background: var(--brand) !important;
+}
+@media (min-width: 641px) {
+  #root #secondNavBar .navbar li li ul {
+    max-height: 60vh !important;
+    overflow: auto !important;
+  }
+}
+.widget .widgetTop {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+.widget .widgetTop .title,
+.widget .widgetTop h2,
+.widget .widgetTop h3 {
+  margin: 0 !important;
+  font-weight: 800 !important;
+  letter-spacing: .1px !important;
+  color: var(--text) !important;
+}
+.dark-mode .widget .widgetTop {
+  border-bottom-color: var(--glass-border) !important;
+  color: var(--text) !important;
+}
+.dark-mode .widget .widgetTop .title,
+.dark-mode .widget .widgetTop h2,
+.dark-mode .widget .widgetTop h3 {
+  color: var(--text) !important;
+}
+.system.notification {
+  border-radius: 12px !important;
+  border: 1px solid transparent !important;
+  box-shadow: var(--shadow-2) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  padding: 12px 8px 12px 55px !important;
+  max-width: 1300px;
+}
+.system.notification.ok {
+  background: var(--ok-bg) !important;
+  border-color: #a7f3d0 !important; /* Green-200 */
+}
+.system.notification.warn {
+  background: var(--warn-bg) !important;
+  border-color: #fde68a !important; /* Amber-200 */
+}
+.system.notification.info {
+  background: var(--info-bg) !important;
+  border-color: #bfdbfe !important; /* Blue-200 */
+}
+.ui-widget-overlay {
+  background: rgba(9, 11, 14, .58) !important;
+  backdrop-filter: blur(4px) !important;
+}
+.ui-dialog {
+  border-radius: 14px !important;
+  border: 1px solid var(--glass-border) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-2) !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+}
+.ui-dialog .ui-dialog-titlebar {
+  padding: 12px 14px !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+.ui-dialog .ui-dialog-content {
+  padding: 16px !important;
+  background: transparent !important;
+}
+.ui-dialog .ui-dialog-buttonpane {
+  padding: 12px 14px !important;
+  background: transparent !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+
+
+.widget .widgetContent {
+  padding: 10px !important;
+}
+.card .card-content {
+    padding: 20px;
+    margin: 0px 15px 0px 15px;
+}
+
+#root #secondNavBar .richMarketplaceMenuButton {
+  display: none !important;
+}
+
+.segmentEditorPanel.expanded .segmentationContainer .dropdown-body {
+  padding-right: 33px;
+}
+
+/*
+ * ====================================================================
+ * Matomo UI Fixes & Enhancements Patch v2
+ * ====================================================================
+ * REPLACES the previous patch. Add to the end of your custom CSS.
+ */
+
+/*
+ * FIX for Issues #1 (Blur) & #2 (Z-index)
+ * --------------------------------------------------------------------
+ * This single rule targets Matomo's generic dropdown container class
+ * to apply the frosted glass effect and a high z-index, solving
+ * both the missing blur and the element stacking problems.
+ */
+.dropdown-content {
+    /* Stacking Fix: A very high z-index to layer above all other content */
+    z-index: 99999 !important;
+
+    /* Visual Fix: Apply consistent styling */
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-2) !important;
+}
+
+ul.dropdown-content.dataTablePeriods {
+    z-index: 99999 !important;
+}
+
+/* Adjust dropdown border for dark mode */
+.dark-mode .dropdown-content {
+    border-color: var(--glass-border) !important;
+}
+
+
+/*
+ * 3) ENHANCEMENT: Improved widget background appearance
+ * --------------------------------------------------------------------
+ * This adds a subtle top-to-bottom gradient to the main widgets,
+ * giving them more depth and making the glass effect less flat.
+ */
+.card,
+.widget {
+    background: var(--glass-bg) !important;
+}
+
+.dark-mode .card,
+.dark-mode .widget {
+    background: var(--glass-bg) !important;
+}
+
+.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.widgetoverlay.ui-draggable.ui-resizable {
+    z-index: 4006 !important;
+}
+
+.ui-widget-overlay.ui-front {
+    z-index: 4001 !important;
+}
+
+.card > .card-content .card-table {
+    width: calc(100%) !important;}
+
+
+
+#loginPage .loginSection > .col {
+    max-width: 33.3333333333%;
+}
+
+
+
+
+
+
+/*
+====================================================================
+SECONDARY NAV FIXES (v2.0 - Revised)
+- Applies sticky positioning and scrolling directly to the inner list.
+- This is a more robust fix that avoids visual conflicts.
+====================================================================
+*/
+
+/* --- 1. Viewport Height & Scrolling (New, Direct Method) --- */
+
+
+
+
+
+/* --- 2. Clean Custom Scrollbar --- */
+#root #secondNavBar .navbar::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+#root #secondNavBar .navbar::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+#root #secondNavBar .navbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px !important;
+    border: 2px solid transparent !important;
+    background-clip: content-box !important;
+}
+
+.dark-mode #root #secondNavBar .navbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+
+/* --- 3. Inline "Custom Reports" Submenu (Unchanged) --- */
+
+/* Reset the popover styles of the dropdown container */
+#root #secondNavBar .menuDropdown .items {
+    display: none !important; /* Keep hidden by default */
+    position: static !important; /* This is the key change from absolute to static */
+    top: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 6px !important; /* Space from the trigger */
+    padding: 0 0 0 16px !important; /* Indent items slightly */
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+/* IMPORTANT: Disable the default hover-to-open behavior */
+#root #secondNavBar .menuDropdown:hover .items,
+#root #secondNavBar .menuDropdown:focus-within .items {
+    display: none !important;
+}
+
+/* Show the submenu ONLY when the parent menu item is active (clicked) */
+#root #secondNavBar .menuTab.active .items {
+    display: block !important;
+}
+
+/* Style the now-inline dropdown items to match other sub-items */
+#root #secondNavBar .menuDropdown .items > div > a.item {
+    padding: 9px 12px !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+}
+
+.dark-mode #root #secondNavBar .menuDropdown .items > div > a.item {
+    color: var(--muted) !important;
+}
+
+#root #secondNavBar .menuDropdown .items > div > a.item:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: var(--text) !important;
+}
+
+.dark-mode #root #secondNavBar .menuDropdown .items > div > a.item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+#root #secondNavBar .menuDropdown .items > div > a.item.active {
+    background: rgba(0, 0, 0, 0.06) !important;
+    color: var(--text) !important;
+}
+
+.dark-mode #root #secondNavBar .menuDropdown .items > div > a.item.active {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+}
+
+/* Hide the search box that was in the popover */
+#root #secondNavBar .menuDropdown .items .search {
+    display: none !important;
+}
+
+
+.ui-tooltip h3.evolution-tooltip-header {
+    color: white !important;}
+
+.ui-tooltip h3 {
+    font-weight: bold;
+    color: #7e7363 !important;}
+
+
+
+
+
+
+
+
+
+/* Small helper: if html has data-blueone="dark", mirror it to .dark-mode rules */
+html[data-blueone="dark"] {
+  /* Nothing needed here because dark-toggle.js will add .dark-mode class too */
+}
