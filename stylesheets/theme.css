@@ -3464,6 +3464,13 @@ SECONDARY NAV FIXES (v2.0 - Revised)
   font-weight: bold !important;
 }
 
+.dark-mode .theWidgetContent .card .card-content table.dataTable th,
+.dark-mode table.dataTable th,
+.dark-mode table.subDataTable th {
+  background: #1e293b !important;
+}
+
+
 
 /*-------------------------/DARK CODE------------------------*/
 
