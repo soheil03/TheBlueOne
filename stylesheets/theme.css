@@ -1,6 +1,6 @@
 
 /* ====================================================================================
-   1) THEME TOKENS (Light & Dark) — "LIQUID GLASS" THEME
+   1) THEME TOKENS (Light)
    ==================================================================================== */
 :root {
   /* Brand: "Apple" Blue */
@@ -68,35 +68,6 @@
   --transition: 180ms cubic-bezier(.2, .9, .2, 1) !important;
   --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.36) !important;
 }
-
-/* Theme-controlled dark (not OS-driven) */
-.dark-mode {
-  --brand-l: 55%; /* Lighter blue for dark mode */
-
-  --bg-base: #0a0f1e !important;
-  background-image: radial-gradient(circle at top left, #1e293b, #0a0f1e) !important;
-  --surface: #1e293b !important;   /* Slate-800 */
-  --muted: #94a3b8 !important;     /* Slate-400 */
-  --text: #f8fafc !important;       /* Slate-50 */
-  --border: #475569 !important;     /* Slate-600 */
-  --soft-border: #334155 !important; /* Slate-700 */
-
-  /* Dark Shadows */
-  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
-  --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
-
-  /* Dark Mode Glass Tokens */
-  --glass-bg: rgba(30, 41, 59, 0.6) !important;  /* Slate-800 with transparency */
-  --glass-border: rgba(255, 255, 255, 0.1) !important;
-
-  /* Dark Status */
-  --ok-bg: rgba(74, 222, 128, 0.1) !important;
-  --warn-bg: rgba(245, 158, 11, 0.1) !important;
-  --info-bg: rgba(59, 130, 246, 0.1) !important;
-  --badge-down-bg: rgba(239, 68, 68, 0.1) !important;
-  --badge-neutral-bg: rgba(100, 116, 139, 0.15) !important;
-}
-
 
 /* ====================================================================================
    2) GLOBAL RESETS & TYPOGRAPHY
@@ -3174,9 +3145,327 @@ SECONDARY NAV FIXES (v2.0 - Revised)
     font-weight: bold;
     color: #7e7363 !important;}
 
+/*-------------------------DARK CODE------------------------*/
+
+/* Theme-controlled dark (not OS-driven) */
+.dark-mode {
+  --brand-l: 55%; /* Lighter blue for dark mode */
+
+  --bg-base: #0a0f1e !important;
+  background-image: radial-gradient(circle at top left, #1e293b, #0a0f1e) !important;
+  --surface: #1e293b !important;   /* Slate-800 */
+  --muted: #94a3b8 !important;     /* Slate-400 */
+  --text: #f8fafc !important;       /* Slate-50 */
+  --border: #475569 !important;     /* Slate-600 */
+  --soft-border: #334155 !important; /* Slate-700 */
+
+  /* Dark Shadows */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+
+  /* Dark Mode Glass Tokens */
+  --glass-bg: rgba(30, 41, 59, 0.6) !important;  /* Slate-800 with transparency */
+  --glass-border: rgba(255, 255, 255, 0.1) !important;
+
+  /* Dark Status */
+  --ok-bg: rgba(74, 222, 128, 0.1) !important;
+  --warn-bg: rgba(245, 158, 11, 0.1) !important;
+  --info-bg: rgba(59, 130, 246, 0.1) !important;
+  --badge-down-bg: rgba(239, 68, 68, 0.1) !important;
+  --badge-neutral-bg: rgba(100, 116, 139, 0.15) !important;
+}
 
 
+/* ====================================================================================
+   MATOMO DARK MODE THEME (v1.0)
+   - Add this entire block to the end of your CSS file.
+   - Activate by adding class="dark-mode" to the <html> tag.
+   ==================================================================================== */
 
+/* 1) === DARK MODE COLOR PALETTE (Design Tokens) === */
+.dark-mode {
+  /* Brand: Lighter blue for better contrast */
+  --brand-h: 210;
+  --brand-s: 100%;
+  --brand-l: 60%;
+  --brand-solid: hsl(var(--brand-h), var(--brand-s), var(--brand-l)) !important;
+
+  /* Core Palette */
+  --bg-base: #0f172a !important;   /* Slate-900: Deep background */
+  --surface: #1e293b !important;   /* Slate-800: Cards, panels, inputs */
+  --text: #f1f5f9 !important;      /* Slate-100: Primary text */
+  --muted: #94a3b8 !important;     /* Slate-400: Secondary text, icons */
+
+  /* Borders */
+  --border: #475569 !important;        /* Slate-600 */
+  --soft-border: #334155 !important;   /* Slate-700 */
+
+  /* "Liquid Glass" Effect */
+  --glass-bg: rgba(30, 41, 59, 0.7) !important;   /* Transparent Slate-800 */
+  --glass-border: rgba(255, 255, 255, 0.1) !important;
+
+  /* Status & Badges */
+  --ok-bg: rgba(34, 197, 94, 0.15) !important;
+  --warn-bg: rgba(245, 158, 11, 0.15) !important;
+  --info-bg: rgba(59, 130, 246, 0.15) !important;
+  --badge-down-bg: rgba(239, 68, 68, 0.15) !important;
+  --badge-neutral-bg: rgba(100, 116, 139, 0.2) !important;
+
+  /* Shadows */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.5) !important;
+}
+
+/* 2) === GLOBAL STYLES & TYPOGRAPHY === */
+.dark-mode body {
+  background-image: radial-gradient(circle at top left, #1e293b, #0f172a) !important;
+}
+.dark-mode .breadcrumb a:hover { background: var(--surface) !important; }
+
+/* 3) === NAVIGATION (TOP & LEFT) === */
+.dark-mode #root nav ul.right > li > a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .piwikTopControl:hover { border-color: rgba(255, 255, 255, 0.2) !important; }
+.dark-mode .quick-access .dropdown li a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .top_bar_sites_selector .custom_select_ul_list a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .periodSelector .move-period { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .periodSelector .move-period:hover { background: rgba(255, 255, 255, 0.15) !important; }
+.dark-mode #periodMore #otherPeriods label:hover span { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .segmentEditorPanel .segmentFilter { background: rgba(255, 255, 255, 0.05) !important; }
+.dark-mode .segmentEditorPanel .segmentList li:hover .segname { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode #root #secondNavBar .navbar>.menuTab>.item:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>.title { background: rgba(255, 255, 255, 0.07) !important; }
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item { color: var(--muted) !important; }
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li>a.item:hover { background: rgba(255, 255, 255, 0.1) !important; color: #fff !important; }
+.dark-mode #root #secondNavBar .navbar>.menuTab>ul[role="menu"]>li.active>a.item { background: rgba(255, 255, 255, 0.15) !important; color: #fff !important; }
+.dark-mode #root #secondNavBar .menuDropdown .title { background: rgba(255, 255, 255, 0.07) !important; }
+.dark-mode #root #secondNavBar .menuDropdown .title:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode #root #secondNavBar .menuDropdown .items > div > a.item:hover { background: rgba(255, 255, 255, 0.1) !important; }
+
+/* 4) === WIDGETS, CARDS & DIALOGS === */
+.dark-mode .system.notification.ok { border-color: #15803d !important; }
+.dark-mode .system.notification.warn { border-color: #d97706 !important; }
+.dark-mode .system.notification.info { border-color: #2563eb !important; }
+.dark-mode .dropdown-content { border-color: var(--glass-border) !important; }
+
+/* 5) === DATA TABLES === */
+.dark-mode table.dataTable { background: transparent !important; border-color: var(--soft-border) !important; }
+.dark-mode table.dataTable thead th,
+.dark-mode table.dataTable thead th:first-child { background: #1e293b !important; color: #e2e8f0 !important; border-color: var(--soft-border) !important; }
+.dark-mode table.dataTable tbody td,
+.dark-mode table.dataTable tbody td.label { background: transparent !important; border-color: var(--soft-border) !important; }
+.dark-mode .dataTableScroller .dataTable tbody tr:nth-child(even) td { background-color: rgba(255, 255, 255, 0.03) !important; }
+.dark-mode table.dataTable tbody tr:hover { background: #334155 !important; box-shadow: none !important; }
+.dark-mode table.dataTable tbody tr.selected { background: var(--border) !important; }
+.dark-mode table.dataTable tbody td.label { background: #151e31 !important; }
+.dark-mode .dataTable.subDataTable th { background-color: var(--bg-base) !important; }
+.dark-mode .dataTable.subDataTable tbody tr:hover { background-color: #334155 !important; }
+
+/* 6) === CHARTS & SPARKLINES === */
+.dark-mode .theWidgetContent .sparkline:hover { background: rgba(30, 41, 59, 0.8) !important; border-color: rgba(255, 255, 255, 0.2) !important; }
+.dark-mode .theWidgetContent .sparkline .metricEvolution { background: var(--surface) !important; }
+.dark-mode .jqplot-highlighter-tooltip { background: var(--bg-base) !important; color: var(--text) !important; }
+.dark-mode .jqplot-seriespicker a { background: var(--surface) !important; }
+.dark-mode .ui-tooltip h3 { color: var(--muted) !important; }
+
+/* 7) === BUTTONS & FORMS === */
+.dark-mode #root .btn--secondary:hover,
+.dark-mode #root .btn.secondary:hover { background: rgba(30, 41, 59, 0.8) !important; border-color: rgba(255, 255, 255, 0.2) !important; }
+.dark-mode #root .btn--ghost:hover,
+.dark-mode #root .btn.outline:hover,
+.dark-mode #root .btn-flat:hover { background: var(--info-bg) !important; }
+.dark-mode #root a.dataTableAction,
+.dark-mode #root .dropdownConfigureIcon,
+.dark-mode #root .tableActions a,
+.dark-mode #root .tableActions button { background: var(--surface) !important; border-color: var(--soft-border) !important; }
+.dark-mode #root a.dataTableAction.highlighted,
+.dark-mode #root .dropdownConfigureIcon.highlighted { background: var(--info-bg) !important; border-color: var(--brand) !important; color: var(--brand-300) !important; }
+.dark-mode #root .tableActions .searchAction { background: var(--surface) !important; border-color: var(--soft-border) !important; }
+.dark-mode #root .tableActions .searchAction .icon-close:hover { background: var(--soft-border) !important; }
+
+/* Inputs and Textareas */
+.dark-mode input:not([type]):not(.browser-default),
+.dark-mode input[type=text]:not(.browser-default),
+.dark-mode input[type=password]:not(.browser-default),
+.dark-mode input[type=email]:not(.browser-default),
+.dark-mode input[type=url]:not(.browser-default),
+.dark-mode input[type=time]:not(.browser-default),
+.dark-mode input[type=date]:not(.browser-default),
+.dark-mode input[type=datetime]:not(.browser-default),
+.dark-mode input[type=datetime-local]:not(.browser-default),
+.dark-mode input[type=month]:not(.browser-default),
+.dark-mode input[type=tel]:not(.browser-default),
+.dark-mode input[type=number]:not(.browser-default),
+.dark-mode input[type=search]:not(.browser-default),
+.dark-mode textarea.materialize-textarea {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+/* 8) === MISCELLANEOUS === */
+.dark-mode .reportsByDimensionView .entityList ul::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2) !important; }
+.dark-mode .reportsByDimensionView .entityList ul::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06) !important; }
+.dark-mode .reportsByDimensionView .entityList ul li:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode .reportsByDimensionView .entityList .badge,
+.dark-mode .reportsByDimensionView .entityList .count { background: rgba(255, 255, 255, 0.14) !important; }
+.dark-mode #root #secondNavBar .navbar::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.25) !important; }
+
+
+/* ====================================================================================
+   DARK MODE COLORING PATCH (v2.0)
+   - Fixes for specific elements that remain in light mode.
+   - Append this to the end of your CSS file.
+   ==================================================================================== */
+
+/*
+ * 1) Top Controls Bar
+ * - Applies a dark background to the main controls container.
+ */
+.dark-mode #root .top_controls,
+.dark-mode #standalone .top_controls {
+  background-color: var(--bg-base) !important;
+  border-bottom: 1px solid var(--soft-border) !important;
+}
+
+/*
+ * 2) JqPlot Charts & Graphs
+ * - Styles the chart container, axes text, and legend for dark mode.
+ */
+.dark-mode .jqplot-graph {
+  background: var(--surface) !important;
+  border: 1px solid var(--soft-border) !important;
+}
+
+.dark-mode .jqplot-axis,
+.dark-mode .jqplot-xaxis,
+.dark-mode .jqplot-yaxis,
+.dark-mode .jqplot-xaxis-tick,
+.dark-mode .jqplot-yaxis-tick {
+  color: var(--muted) !important;
+}
+
+.dark-mode .jqplot-legend {
+  background: var(--bg-base) !important;
+  border-color: var(--soft-border) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode .jqplot-title {
+  color: var(--text) !important;
+}
+
+/*
+ * 3) Date Picker Calendar (#periodMore)
+ * - Styles the entire jQuery UI date picker dropdown for dark mode.
+ */
+.dark-mode #periodMore.dropdown,
+.dark-mode .ui-datepicker,
+.dark-mode .ui-widget-content {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode .ui-datepicker-header,
+.dark-mode .ui-widget-header {
+  background: var(--bg-base) !important;
+  border-color: var(--soft-border) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode .ui-datepicker-calendar th,
+.dark-mode .ui-datepicker .ui-datepicker-title select {
+  color: var(--muted) !important;
+  background-color: var(--surface) !important;
+}
+
+.dark-mode .ui-datepicker-calendar td a,
+.dark-mode .ui-widget-content .ui-state-default {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: none !important;
+}
+
+.dark-mode .ui-datepicker-calendar td a:hover,
+.dark-mode .ui-widget-content .ui-state-hover {
+  background: var(--soft-border) !important;
+}
+
+.dark-mode .ui-datepicker-calendar td.ui-datepicker-today a,
+.dark-mode .ui-widget-content .ui-state-highlight {
+  background: rgba(96, 165, 250, 0.2) !important; /* Blue tint for today */
+  color: #dbeafe !important;
+}
+
+.dark-mode .ui-datepicker-calendar td.ui-datepicker-current-day a,
+.dark-mode .ui-widget-content .ui-state-active {
+  background: var(--brand-solid) !important;
+  color: white !important;
+}
+
+/*
+ * 4) Sparkline Images
+ * - Inverts the color of sparkline images to make them visible on dark backgrounds.
+ */
+.dark-mode div.sparkline img,
+.dark-mode .sparkline img {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5) contrast(0.9) !important;
+}
+
+/*
+ * 5) Card Titles & Text Elements
+ * - Ensures various text elements inside widgets are light-colored.
+ */
+.dark-mode .card-title,
+.dark-mode .card-title a,
+.dark-mode .card-description,
+.dark-mode .sparkline-metrics,
+.dark-mode .sparkline-metrics strong,
+.dark-mode .ulGoalTopElements,
+.dark-mode .ulGoalTopElements li {
+  color: var(--text) !important;
+}
+
+/*
+ * 6) Table Header Documentation Popup
+ * - Styles the help pop-up that appears when hovering over table columns.
+ */
+.dark-mode .columnDocumentation {
+  background: var(--bg-base) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow-2) !important;
+}
+
+.dark-mode .columnDocumentation .columnDocumentationTitle {
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--soft-border) !important;
+}
+
+/*
+ * 7) Quick Access Dropdown Menu
+ * - Styles the search/quick access dropdown that appears in the top navigation.
+ */
+.dark-mode .dropdown,
+.dark-mode .dropdown ul {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode .dropdown li.result:hover,
+.dark-mode .dropdown li.result.selected {
+  background-color: var(--soft-border) !important;
+}
+
+.dark-mode .dropdown li.quick-access-category {
+  color: var(--muted) !important;
+  font-weight: bold !important;
+}
+
+
+/*-------------------------/DARK CODE------------------------*/
 
 
 
