@@ -10,7 +10,7 @@
     { "name": "Soheil Jafari", "email": "soheil03@gmail.com", "homepage": "https://github.com/soheil03" }
   ],
   "require": {
-    "matomo": ">=5.1.0",
+    "matomo": ">=5.1.0,<6.0.0-b1",
     "php": ">=8.1.0"
   }
 }
