@@ -13,4 +13,9 @@
     "matomo": ">=5.1.0,<6.0.0-b1",
     "php": ">=8.1.0"
   }
+  "support": {
+    "email": "soheil03@gmail.com",
+    "issues": "https://github.com/soheil03/TheBlueOne/issues",
+    "source": "https://github.com/soheil03/TheBlueOne"
+  },
 }
