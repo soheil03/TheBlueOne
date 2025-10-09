@@ -3017,7 +3017,7 @@ ul.dropdown-content.dataTablePeriods {
 }
 
 .ui-widget-overlay.ui-front {
-    z-index: 4001 !important;
+    z-index: 400 !important;
 }
 
 .card > .card-content .card-table {
