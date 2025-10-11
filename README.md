@@ -1,8 +1,12 @@
 
 # The Blue One
 
+
+## Description
 A peaceful, modern Matomo theme. 
 Includes a **built-in Dark Mode** toggle (stores user preference in `localStorage`).
+
+I built this theme because I loved Matomo, but the UI was not satisfying to me. Then I decided to share it with everyone.
 
 ## Install
 1. Copy this folder to `plugins/TheBlueOne`.
