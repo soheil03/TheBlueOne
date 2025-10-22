@@ -1,21 +1,25 @@
 {
   "name": "TheBlueOne",
-  "description": "a peaceful, modern theme",
+  "description": "A peaceful, modern theme",
   "version": "1.5.5",
   "theme": true,
   "license": "MIT",
-  "keywords": ["theme","ui","design","blue","glass"],
+  "keywords": ["theme", "ui", "design", "blue", "glass"],
   "homepage": "https://github.com/soheil03/TheBlueOne",
   "authors": [
-    { "name": "Soheil Jafari", "email": "soheil03@gmail.com", "homepage": "https://github.com/soheil03" }
+    {
+      "name": "Soheil Jafari",
+      "email": "soheil03@gmail.com",
+      "homepage": "https://github.com/soheil03"
+    }
   ],
   "require": {
     "matomo": ">=5.0.0,<6.0.0-b1",
     "php": ">=8.1.0"
-  }
+  },
   "support": {
     "email": "soheil03@gmail.com",
     "issues": "https://github.com/soheil03/TheBlueOne/issues",
     "source": "https://github.com/soheil03/TheBlueOne"
-  },
+  }
 }
