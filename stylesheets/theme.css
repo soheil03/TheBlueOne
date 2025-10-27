@@ -2736,7 +2736,7 @@ label.floating textarea:not(:placeholder-shown)+.label {
   padding: 0 0 1px 0 !important;
 }
 .row .col.l4 {
-  width: -webkit-fill-available !important;
+width: auto !important; 
 }
 .marketplace .card-holder .card {
   width: 33% !important;
