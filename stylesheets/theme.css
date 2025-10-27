@@ -970,7 +970,7 @@ nav .navbar-icon {
 
 /* Custom Reports dropdown */
 #root #secondNavBar .menuDropdown {
-  display: flex !important;
+  display: inline-block !important;
   flex-direction: column !important;
   gap: 6px !important;
   width: 100% !important;
