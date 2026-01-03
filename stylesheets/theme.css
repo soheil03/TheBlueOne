@@ -25,7 +25,7 @@
   --muted: #64748b !important;   /* Slate-500 */
   --text: #0f172a !important;     /* Slate-900 */
   --bg-base: #f0f4f9 !important;   /* A light, cool gray */
-  background-image: radial-gradient(circle at top left, #ffffff, #f0f4f9) !important;
+  --bg-gradient: radial-gradient(circle at top left, #ffffff, #f0f4f9) !important;
 
   /* Borders */
   --border: #cbd5e1 !important;        /* Slate-300 */
@@ -80,13 +80,18 @@ html,
 body {
   min-height: 100% !important;
   margin: 0 !important;
-  background: var(--bg-base) !important;
+  background-color: var(--bg-base) !important;
+  background-image: var(--bg-gradient) !important;
   color: var(--text) !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial !important;
   font-weight: 400 !important;
   line-height: 1.45 !important;
+}
+
+body {
+  background-color: transparent !important;
 }
 
 h1,
@@ -3145,41 +3150,6 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 
 /*-------------------------DARK CODE------------------------*/
 
-/* Theme-controlled dark (not OS-driven) */
-.dark-mode {
-  --brand-l: 55%; /* Lighter blue for dark mode */
-
-  --bg-base: #0a0f1e !important;
-  background-image: radial-gradient(circle at top left, #1e293b, #0a0f1e) !important;
-  --surface: #1e293b !important;   /* Slate-800 */
-  --muted: #94a3b8 !important;     /* Slate-400 */
-  --text: #f8fafc !important;       /* Slate-50 */
-  --border: #475569 !important;     /* Slate-600 */
-  --soft-border: #334155 !important; /* Slate-700 */
-
-  /* Dark Shadows */
-  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
-  --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
-
-  /* Dark Mode Glass Tokens */
-  --glass-bg: rgba(30, 41, 59, 0.6) !important;  /* Slate-800 with transparency */
-  --glass-border: rgba(255, 255, 255, 0.1) !important;
-
-  /* Dark Status */
-  --ok-bg: rgba(74, 222, 128, 0.1) !important;
-  --warn-bg: rgba(245, 158, 11, 0.1) !important;
-  --info-bg: rgba(59, 130, 246, 0.1) !important;
-  --badge-down-bg: rgba(239, 68, 68, 0.1) !important;
-  --badge-neutral-bg: rgba(100, 116, 139, 0.15) !important;
-}
-
-
-/* ====================================================================================
-   MATOMO DARK MODE THEME (v1.0)
-   - Add this entire block to the end of your CSS file.
-   - Activate by adding class="dark-mode" to the <html> tag.
-   ==================================================================================== */
-
 /* 1) === DARK MODE COLOR PALETTE (Design Tokens) === */
 .dark-mode {
   /* Brand: Lighter blue for better contrast */
@@ -3193,12 +3163,13 @@ SECONDARY NAV FIXES (v2.0 - Revised)
   --surface: #1e293b !important;   /* Slate-800: Cards, panels, inputs */
   --text: #f1f5f9 !important;      /* Slate-100: Primary text */
   --muted: #94a3b8 !important;     /* Slate-400: Secondary text, icons */
+  --bg-gradient: radial-gradient(circle at top left, #1e293b, #0f172a) !important;
 
   /* Borders */
   --border: #475569 !important;        /* Slate-600 */
   --soft-border: #334155 !important;   /* Slate-700 */
 
-  /* "Liquid Glass" Effect */
+  /* \"Liquid Glass\" Effect */
   --glass-bg: rgba(30, 41, 59, 0.7) !important;   /* Transparent Slate-800 */
   --glass-border: rgba(255, 255, 255, 0.1) !important;
 
@@ -3219,7 +3190,7 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 
 /* 2) === GLOBAL STYLES & TYPOGRAPHY === */
 .dark-mode body {
-  background-image: radial-gradient(circle at top left, #1e293b, #0f172a) !important;
+  background-image: var(--bg-gradient) !important;
 }
 .dark-mode .breadcrumb a:hover { background: var(--surface) !important; }
 
