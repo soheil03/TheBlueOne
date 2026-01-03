@@ -67,12 +67,20 @@
   --shadow-2: 0 10px 24px rgba(17, 17, 17, 0.12), 0 4px 10px rgba(17, 17, 17, 0.06) !important;
   --transition: 180ms cubic-bezier(.2, .9, .2, 1) !important;
   --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.36) !important;
+  --surface-strong: #f8fafc !important;
+  --surface-muted: #eef2f7 !important;
+  --border-strong: #94a3b8 !important;
+  --shadow-soft: 0 18px 38px rgba(15, 23, 42, 0.08), 0 8px 18px rgba(15, 23, 42, 0.04) !important;
+  --shadow-hero: 0 22px 48px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.16) !important;
+  color-scheme: light !important;
 }
 
 /* ====================================================================================
    2) GLOBAL RESETS & TYPOGRAPHY
    ==================================================================================== */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box !important;
 }
 
@@ -117,12 +125,39 @@ h4 {
 }
 
 :focus {
-  outline: none !important;
+  outline: 2px solid rgba(59, 130, 246, 0.5) !important;
+  outline-offset: 2px !important;
 }
 
 :focus-visible {
   box-shadow: var(--focus-ring) !important;
   border-radius: calc(var(--radius-sm) + 2px) !important;
+}
+
+@supports selector(:focus-visible) {
+  :focus {
+    outline: none !important;
+  }
+}
+
+::selection {
+  background: var(--brand-200) !important;
+  color: var(--text) !important;
+}
+
+::-moz-selection {
+  background: var(--brand-200) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode ::selection {
+  background: rgba(96, 165, 250, 0.35) !important;
+  color: var(--text) !important;
+}
+
+.dark-mode ::-moz-selection {
+  background: rgba(96, 165, 250, 0.35) !important;
+  color: var(--text) !important;
 }
 
 
@@ -201,6 +236,30 @@ nav .navbar-icon {
 #root nav ul.right>li.active>a .navbar-icon,
 #root nav ul.right>li>a:hover .navbar-icon {
   color: inherit !important;
+}
+#root nav ul.right>li>a {
+  position: relative !important;
+}
+#root nav ul.right>li>a::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 6px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.2) !important;
+  transform: scaleX(0) !important;
+  transform-origin: center !important;
+  transition: transform .18s ease, background .18s ease !important;
+}
+#root nav ul.right>li>a:hover::after {
+  transform: scaleX(1) !important;
+  background: hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.42) !important;
+}
+#root nav ul.right>li.active>a::after {
+  transform: scaleX(1) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Nav toggles (mobile) */
@@ -330,6 +389,7 @@ nav .navbar-icon {
 }
 
 #root .top_controls .quick-access input {
+  width: 100% !important;
   width: -webkit-fill-available !important;
   padding: 10px 12px 10px 30px !important;
   border-radius: 12px !important;
@@ -366,6 +426,19 @@ nav .navbar-icon {
   z-index: 3800 !important;
 }
 .dark-mode .quick-access .dropdown { box-shadow: 0 12px 26px rgba(0,0,0,.4) !important; }
+
+@media (max-width: 480px) {
+  .quick-access .dropdown {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    min-width: 0 !important;
+    width: 92vw !important;
+    max-width: 92vw !important;
+  }
+  .quick-access input.s {
+    max-width: 100% !important;
+  }
+}
 
 .quick-access .dropdown ul {
   list-style: none !important;
@@ -489,12 +562,13 @@ nav .navbar-icon {
   max-width: min(92vw, 900px) !important;
   padding: 12px !important;
   border-radius: 12px !important;
-  /* background: var(--glass-bg) !important; */
-  backdrop-filter: blur(var(--glass-blur)) !important;
-  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
-  border: 1px solid var(--glass-border) !important;
-  box-shadow: var(--shadow-2) !important;
+  background: var(--surface) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--soft-border) !important;
+  box-shadow: var(--shadow-1) !important;
   overflow: visible !important;
+  width: 100% !important;
   width: -webkit-fill-available !important;
 }
 .dark-mode #periodMore.dropdown { box-shadow: 0 16px 28px rgba(0,0,0,.55) !important; }
@@ -519,6 +593,8 @@ nav .navbar-icon {
     left: 0 !important;
     right: 0 !important;
     width: 92vw !important;
+    min-width: 0 !important;
+    padding: 12px 10px !important;
   }
 
   #periodMore .flex {
@@ -542,6 +618,7 @@ nav .navbar-icon {
   padding: 8px !important;
   background: var(--surface) !important;
   border: 1px solid var(--soft-border) !important;
+  box-shadow: var(--shadow-1) !important;
 }
 .dark-mode #periodMore .ui-datepicker { background: var(--surface) !important; }
 
@@ -1198,15 +1275,17 @@ nav .navbar-icon {
 /* Cards */
 .card,
 .widget {
-  background: var(--glass-bg) !important;
-  /* backdrop-filter: blur(var(--glass-blur)) !important; */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%) !important;
   -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: var(--radius-lg) !important;
   padding: 0 !important;
   margin: 14px 0 !important;
-  box-shadow: var(--shadow-1) !important;
+  box-shadow: var(--shadow-soft) !important;
   transition: box-shadow .2s ease, transform .1s ease, border-color .2s ease, backdrop-filter .2s ease !important;
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 1 !important;
 }
 
 .widget .widgetTop {
@@ -1214,13 +1293,13 @@ nav .navbar-icon {
   font-weight: 600 !important;
   color: var(--text) !important;
   border-bottom: 1px solid var(--glass-border) !important;
-  background: transparent !important;
+  background: var(--surface-muted) !important;
   border-top-left-radius: var(--radius-lg) !important;
   border-top-right-radius: var(--radius-lg) !important;
 }
 .dark-mode .widget .widgetTop {
   color: var(--text) !important;
-  background: transparent !important;
+  background: var(--surface-strong) !important;
 }
 
 .widget .dataTableVizEvolution {
@@ -1237,6 +1316,38 @@ nav .navbar-icon {
 .card .card-action:last-child {
     border-radius: 14px;
 }
+.card .card-content,
+.widget .widgetContent {
+  background: transparent !important;
+  border-radius: calc(var(--radius-lg) - 2px) !important;
+}
+.dark-mode .card .card-content,
+.dark-mode .widget .widgetContent {
+  background: transparent !important;
+}
+.card:hover,
+.widget:hover {
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow-1) !important;
+  transform: none !important;
+  z-index: 6 !important;
+}
+
+@media (max-width: 768px) {
+  .card,
+  .widget {
+    margin: 10px 0 !important;
+    border-radius: 14px !important;
+  }
+  .card .card-content,
+  .widget .widgetContent {
+    padding: 14px !important;
+    margin: 0 8px !important;
+  }
+  .widget .widgetTop {
+    padding: 10px 12px !important;
+  }
+}
 
 
 /* This is a TABLE container, so it's safe to apply glass */
@@ -1249,6 +1360,9 @@ nav .navbar-icon {
   box-shadow: var(--shadow-1) !important;
   padding: 6px 6px 10px !important;
   overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 
@@ -1271,6 +1385,8 @@ table.dataTable thead th {
   line-height: 1.25 !important;
   vertical-align: top !important;
   text-align: left !important;
+  background: var(--surface-strong) !important;
+  box-shadow: inset 0 -1px 0 var(--soft-border) !important;
 }
 
 table.dataTable thead th .thDIV {
@@ -1322,6 +1438,12 @@ table.dataTable tbody td:last-child {
 table.dataTable tbody tr:hover {
   background: var(--brand-50) !important;
   box-shadow: inset 0 -1px 0 var(--brand-100), inset 0 1px 0 var(--brand-100) !important;
+}
+table.dataTable tbody tr:focus-within {
+  background: var(--brand-50) !important;
+  outline: 2px solid hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.28) !important;
+  outline-offset: -2px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 table.dataTable tbody tr.selected {
@@ -1515,6 +1637,9 @@ table.dataTable tbody td.label .title:focus-within::after {
   table.dataTable tbody td.label .title::after {
     max-width: 92vw;
   }
+  .tableCard {
+    padding: 6px 4px 10px !important;
+  }
 }
 
 /* Align numeric column next to label */
@@ -1662,14 +1787,14 @@ div.sparkline.linked,
 }
 
 .theWidgetContent .sparkline:hover {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-  box-shadow: var(--shadow-2) !important;
-  background: rgba(255, 255, 255, 0.8) !important;
-  transform: translateY(-1px) !important;
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--shadow-1) !important;
+  background: var(--glass-bg) !important;
+  transform: none !important;
 }
 .dark-mode .theWidgetContent .sparkline:hover {
-  background: rgba(30, 41, 59, 0.8) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: var(--glass-bg) !important;
+  border-color: var(--glass-border) !important;
 }
 
 
@@ -1802,9 +1927,9 @@ div.sparkline .label,
   max-width: 100% !important;
   overflow: visible !important;
   border-radius: 12px !important;
-  background: var(--glass-bg) !important;
+  background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%) !important;
   border: 1px solid var(--glass-border) !important;
-  box-shadow: var(--shadow-1) !important;
+  box-shadow: var(--shadow-1), var(--shadow-soft) !important;
   padding: 8px 8px 6px !important;
 }
 
@@ -1814,6 +1939,7 @@ div.sparkline .label,
   padding: 0 !important;
   margin: 0 !important;
   box-sizing: border-box !important;
+  width: 100% !important;
   width: -webkit-fill-available !important;
 }
 
@@ -2580,11 +2706,11 @@ label.floating textarea:not(:placeholder-shown)+.label {
   width: 100% !important;
   padding: 12px !important;
   border-radius: var(--radius-lg) !important;
-  background: var(--glass-bg) !important;
+  background: linear-gradient(180deg, var(--surface-strong) 0%, var(--surface) 100%) !important;
   backdrop-filter: blur(var(--glass-blur)) !important;
   -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
   border: 1px solid var(--glass-border) !important;
-  box-shadow: var(--shadow-2) !important;
+  box-shadow: var(--shadow-soft) !important;
   color: var(--text) !important;
 }
 .dark-mode .reportsByDimensionView {
@@ -2770,6 +2896,23 @@ label.floating textarea:not(:placeholder-shown)+.label {
   .activateLeftMenu,
   .activateTopMenu {
     display: inline-flex !important;
+  }
+
+  #root nav .nav-wrapper {
+    height: 56px !important;
+    gap: 10px !important;
+  }
+
+  #root nav {
+    padding: 0 6px !important;
+  }
+
+  .top_controls {
+    gap: 8px !important;
+  }
+
+  .periodSelector .title {
+    min-width: 0 !important;
   }
 }
 
@@ -2987,6 +3130,7 @@ label.floating textarea:not(:placeholder-shown)+.label {
     border: 1px solid var(--glass-border) !important;
     border-radius: var(--radius-md) !important;
     box-shadow: var(--shadow-2) !important;
+    overflow: visible !important;
 }
 
 ul.dropdown-content.dataTablePeriods {
@@ -3007,12 +3151,16 @@ ul.dropdown-content.dataTablePeriods {
  */
 .card,
 .widget {
-    background: var(--glass-bg) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%) !important;
+    box-shadow: var(--shadow-soft) !important;
+    border: 1px solid var(--glass-border) !important;
 }
 
 .dark-mode .card,
 .dark-mode .widget {
-    background: var(--glass-bg) !important;
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.85) 0%, rgba(17, 24, 39, 0.72) 100%) !important;
+    box-shadow: var(--shadow-soft) !important;
+    border: 1px solid var(--glass-border) !important;
 }
 
 .ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.widgetoverlay.ui-draggable.ui-resizable {
@@ -3030,6 +3178,13 @@ ul.dropdown-content.dataTablePeriods {
 
 #loginPage .loginSection > .col {
     max-width: 33.3333333333%;
+}
+
+@media (max-width: 900px) {
+  #loginPage .loginSection > .col {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 
@@ -3050,6 +3205,15 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 
 
 
+
+#root #secondNavBar .navbar {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent !important;
+}
+
+.dark-mode #root #secondNavBar .navbar {
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent !important;
+}
 
 /* --- 2. Clean Custom Scrollbar --- */
 #root #secondNavBar .navbar::-webkit-scrollbar {
@@ -3152,6 +3316,7 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 
 /* 1) === DARK MODE COLOR PALETTE (Design Tokens) === */
 .dark-mode {
+  color-scheme: dark !important;
   /* Brand: Lighter blue for better contrast */
   --brand-h: 210;
   --brand-s: 100%;
@@ -3161,6 +3326,8 @@ SECONDARY NAV FIXES (v2.0 - Revised)
   /* Core Palette */
   --bg-base: #0f172a !important;   /* Slate-900: Deep background */
   --surface: #1e293b !important;   /* Slate-800: Cards, panels, inputs */
+  --surface-strong: #111827 !important;
+  --surface-muted: #0d1627 !important;
   --text: #f1f5f9 !important;      /* Slate-100: Primary text */
   --muted: #94a3b8 !important;     /* Slate-400: Secondary text, icons */
   --bg-gradient: radial-gradient(circle at top left, #1e293b, #0f172a) !important;
@@ -3168,6 +3335,7 @@ SECONDARY NAV FIXES (v2.0 - Revised)
   /* Borders */
   --border: #475569 !important;        /* Slate-600 */
   --soft-border: #334155 !important;   /* Slate-700 */
+  --border-strong: #64748b !important;
 
   /* \"Liquid Glass\" Effect */
   --glass-bg: rgba(30, 41, 59, 0.7) !important;   /* Transparent Slate-800 */
@@ -3183,6 +3351,8 @@ SECONDARY NAV FIXES (v2.0 - Revised)
   /* Shadows */
   --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
   --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+  --shadow-soft: 0 18px 38px rgba(0, 0, 0, 0.32) !important;
+  --shadow-hero: 0 22px 48px rgba(59, 130, 246, 0.18) !important;
 
   /* Focus Ring */
   --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.5) !important;
@@ -3223,6 +3393,7 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 .dark-mode table.dataTable { background: transparent !important; border-color: var(--soft-border) !important; }
 .dark-mode table.dataTable thead th,
 .dark-mode table.dataTable thead th:first-child { background: #1e293b !important; color: #e2e8f0 !important; border-color: var(--soft-border) !important; }
+.dark-mode table.dataTable thead th { box-shadow: inset 0 -1px 0 var(--border) !important; }
 .dark-mode table.dataTable tbody td,
 .dark-mode table.dataTable tbody td.label { background: transparent !important; border-color: var(--soft-border) !important; }
 .dark-mode .dataTableScroller .dataTable tbody tr:nth-child(even) td { background-color: rgba(255, 255, 255, 0.03) !important; }
@@ -3233,7 +3404,7 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 .dark-mode .dataTable.subDataTable tbody tr:hover { background-color: #334155 !important; }
 
 /* 6) === CHARTS & SPARKLINES === */
-.dark-mode .theWidgetContent .sparkline:hover { background: rgba(30, 41, 59, 0.8) !important; border-color: rgba(255, 255, 255, 0.2) !important; }
+.dark-mode .theWidgetContent .sparkline:hover { background: var(--glass-bg) !important; border-color: var(--glass-border) !important; box-shadow: var(--shadow-1) !important; transform: none !important; }
 .dark-mode .theWidgetContent .sparkline .metricEvolution { background: var(--surface) !important; }
 .dark-mode .jqplot-highlighter-tooltip { background: var(--bg-base) !important; color: var(--text) !important; }
 .dark-mode .jqplot-seriespicker a { background: var(--surface) !important; }
