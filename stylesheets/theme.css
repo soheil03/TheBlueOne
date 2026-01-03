@@ -1,4 +1,3 @@
-
 /* ====================================================================================
    1) THEME TOKENS (Light)
    ==================================================================================== */
@@ -49,7 +48,7 @@
 
   /* Liquid Glass Tokens */
   --glass-blur: 16px !important;
-  --glass-bg: rgba(255, 255, 255, 0.78) !important;
+  --glass-bg: rgba(255, 255, 255, 0.82) !important;
   --glass-border: rgba(148, 163, 184, 0.28) !important;
 
   /* Legacy & Compatibility */
@@ -172,7 +171,7 @@ h4 {
   backdrop-filter: blur(var(--glass-blur)) !important;
   -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
   border-bottom: 1px solid var(--glass-border) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 8px 18px rgba(15, 23, 42, 0.06) !important;
 }
 
 #root nav .nav-wrapper {
@@ -199,7 +198,7 @@ h4 {
 }
 
 #root nav ul.right>li>a:hover {
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.08) !important;
 }
 .dark-mode #root nav ul.right > li > a:hover { background: rgba(255, 255, 255, 0.1) !important; }
 
@@ -328,6 +327,13 @@ nav .navbar-icon {
   gap: 14px !important;
   flex-wrap: wrap !important;
   margin: 14px 0 18px !important;
+  padding: 10px 12px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(244, 247, 251, 0.85) 100%) !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
+  backdrop-filter: blur(calc(var(--glass-blur) / 2)) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2)) !important;
 }
 
 .piwikTopControl,
@@ -359,7 +365,7 @@ nav .navbar-icon {
 }
 
 .piwikTopControl:hover {
-  border-color: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
   box-shadow: var(--shadow-2) !important;
   transform: translateY(-1px);
 }
@@ -1328,9 +1334,9 @@ nav .navbar-icon {
 }
 .card:hover,
 .widget:hover {
-  border-color: rgba(148, 163, 184, 0.38) !important;
+  border-color: var(--border) !important;
   box-shadow: var(--shadow-2) !important;
-  transform: translateY(-1px) !important;
+  transform: none !important;
   z-index: 6 !important;
 }
 
@@ -2910,6 +2916,7 @@ label.floating textarea:not(:placeholder-shown)+.label {
 
   .top_controls {
     gap: 8px !important;
+    padding: 8px 10px !important;
   }
 
   .periodSelector .title {
@@ -2996,7 +3003,7 @@ label.floating textarea:not(:placeholder-shown)+.label {
   box-shadow: var(--focus-ring) !important;
 }
 #root nav ul.right>li.active>a {
-  background: var(--brand) !important;
+  background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-600) 100%) !important;
 }
 #logo img {
   transform: translateY(1px) !important;
@@ -3366,7 +3373,9 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 .dark-mode .breadcrumb a:hover { background: var(--surface) !important; }
 
 /* 3) === NAVIGATION (TOP & LEFT) === */
-.dark-mode #root nav ul.right > li > a:hover { background: rgba(255, 255, 255, 0.1) !important; }
+.dark-mode #root nav ul.right > li > a:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
 .dark-mode .piwikTopControl:hover { border-color: rgba(255, 255, 255, 0.2) !important; }
 .dark-mode .quick-access .dropdown li a:hover { background: rgba(255, 255, 255, 0.1) !important; }
 .dark-mode .top_bar_sites_selector .custom_select_ul_list a:hover { background: rgba(255, 255, 255, 0.1) !important; }
@@ -3466,8 +3475,11 @@ SECONDARY NAV FIXES (v2.0 - Revised)
  */
 .dark-mode #root .top_controls,
 .dark-mode #standalone .top_controls {
-  background-color: var(--bg-base) !important;
-  border-bottom: 1px solid var(--soft-border) !important;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(calc(var(--glass-blur) / 2)) !important;
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) / 2)) !important;
 }
 
 /*
@@ -3544,6 +3556,17 @@ SECONDARY NAV FIXES (v2.0 - Revised)
 .dark-mode .ui-widget-content .ui-state-active {
   background: var(--brand-solid) !important;
   color: white !important;
+}
+
+/* Toned-down hover on date picker + modal elements */
+#periodMore .ui-datepicker-calendar td a:hover,
+.ui-widget-content .ui-state-hover {
+  background: rgba(15, 23, 42, 0.04) !important;
+  border-radius: 6px !important;
+}
+.dark-mode #periodMore .ui-datepicker-calendar td a:hover,
+.dark-mode .ui-widget-content .ui-state-hover {
+  background: rgba(255, 255, 255, 0.08) !important;
 }
 
 /*
