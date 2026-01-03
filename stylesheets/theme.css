@@ -24,8 +24,8 @@
   --surface: #ffffff !important;
   --muted: #64748b !important;   /* Slate-500 */
   --text: #0f172a !important;     /* Slate-900 */
-  --bg-base: #f0f4f9 !important;   /* A light, cool gray */
-  --bg-gradient: radial-gradient(circle at top left, #ffffff, #f0f4f9) !important;
+  --bg-base: #e9eef5 !important;   /* A soft, cool gray */
+  --bg-gradient: radial-gradient(circle at 16% 12%, #ffffff 0%, #f6f8fc 32%, #e7edf6 90%) !important;
 
   /* Borders */
   --border: #cbd5e1 !important;        /* Slate-300 */
@@ -48,9 +48,9 @@
   --badge-neutral-bg: #f1f5f9 !important;
 
   /* Liquid Glass Tokens */
-  --glass-blur: 24px !important;
-  --glass-bg: rgba(255, 255, 255, 0.6) !important;
-  --glass-border: rgba(255, 255, 255, 0.4) !important;
+  --glass-blur: 16px !important;
+  --glass-bg: rgba(255, 255, 255, 0.78) !important;
+  --glass-border: rgba(148, 163, 184, 0.28) !important;
 
   /* Legacy & Compatibility */
   --brand-primary: var(--brand-solid) !important;
@@ -64,14 +64,14 @@
   --space-md: 12px !important;
   --space-lg: 18px !important;
   --shadow-1: 0 1px 3px rgba(17, 17, 17, 0.08), 0 1px 2px rgba(17, 17, 17, 0.04) !important;
-  --shadow-2: 0 10px 24px rgba(17, 17, 17, 0.12), 0 4px 10px rgba(17, 17, 17, 0.06) !important;
-  --transition: 180ms cubic-bezier(.2, .9, .2, 1) !important;
+  --shadow-2: 0 10px 28px rgba(15, 23, 42, 0.1), 0 6px 14px rgba(15, 23, 42, 0.05) !important;
+  --transition: 140ms cubic-bezier(.2, .8, .25, 1) !important;
   --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.36) !important;
   --surface-strong: #f8fafc !important;
   --surface-muted: #eef2f7 !important;
   --border-strong: #94a3b8 !important;
-  --shadow-soft: 0 18px 38px rgba(15, 23, 42, 0.08), 0 8px 18px rgba(15, 23, 42, 0.04) !important;
-  --shadow-hero: 0 22px 48px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.16) !important;
+  --shadow-soft: 0 18px 44px rgba(15, 23, 42, 0.08), 0 10px 22px rgba(15, 23, 42, 0.05) !important;
+  --shadow-hero: 0 24px 50px hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.18) !important;
   color-scheme: light !important;
 }
 
@@ -93,9 +93,9 @@ body {
   color: var(--text) !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial !important;
-  font-weight: 400 !important;
-  line-height: 1.45 !important;
+  font-family: "Inter", "SF Pro Display", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
 }
 
 body {
@@ -106,9 +106,10 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 0 0 var(--space-sm) 0 !important;
+  margin: 0 0 10px 0 !important;
   color: var(--text) !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
 }
 
 .container {
@@ -216,7 +217,7 @@ h4 {
   font-weight: 600 !important;
   color: var(--text) !important;
   text-decoration: none !important;
-  transition: background .18s ease, color .18s ease, box-shadow .18s ease !important;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition) !important;
 }
 
 #root nav ul.right>li.active>a {
@@ -251,7 +252,7 @@ nav .navbar-icon {
   background: hsla(var(--brand-h), var(--brand-s), var(--brand-l), 0.2) !important;
   transform: scaleX(0) !important;
   transform-origin: center !important;
-  transition: transform .18s ease, background .18s ease !important;
+  transition: transform var(--transition), background var(--transition) !important;
 }
 #root nav ul.right>li>a:hover::after {
   transform: scaleX(1) !important;
@@ -324,9 +325,9 @@ nav .navbar-icon {
 .top_controls {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 14px !important;
   flex-wrap: wrap !important;
-  margin: 10px 0 14px !important;
+  margin: 14px 0 18px !important;
 }
 
 .piwikTopControl,
@@ -353,7 +354,7 @@ nav .navbar-icon {
   color: var(--text) !important;
   text-decoration: none !important;
   font-weight: 700 !important;
-  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition) !important;
   justify-content: center !important;
 }
 
@@ -1275,25 +1276,25 @@ nav .navbar-icon {
 /* Cards */
 .card,
 .widget {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 247, 252, 0.9) 100%) !important;
   -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
   border: 1px solid var(--glass-border) !important;
   border-radius: var(--radius-lg) !important;
   padding: 0 !important;
-  margin: 14px 0 !important;
+  margin: 16px 0 !important;
   box-shadow: var(--shadow-soft) !important;
-  transition: box-shadow .2s ease, transform .1s ease, border-color .2s ease, backdrop-filter .2s ease !important;
+  transition: box-shadow var(--transition), border-color var(--transition), transform 120ms ease !important;
   position: relative !important;
   overflow: visible !important;
   z-index: 1 !important;
 }
 
 .widget .widgetTop {
-  padding: 12px 16px !important;
-  font-weight: 600 !important;
+  padding: 14px 18px !important;
+  font-weight: 700 !important;
   color: var(--text) !important;
-  border-bottom: 1px solid var(--glass-border) !important;
-  background: var(--surface-muted) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.92) 0%, rgba(241, 245, 249, 0.9) 100%) !important;
   border-top-left-radius: var(--radius-lg) !important;
   border-top-right-radius: var(--radius-lg) !important;
 }
@@ -1307,11 +1308,11 @@ nav .navbar-icon {
 }
 
 .widget .widgetContent .card .card-content {
-  padding: 20px !important;
+  padding: 16px 18px !important;
 }
 
 .card .card-content .card-title {
-  margin-bottom: 20px !important;
+  margin-bottom: 16px !important;
 }
 .card .card-action:last-child {
     border-radius: 14px;
@@ -1327,9 +1328,9 @@ nav .navbar-icon {
 }
 .card:hover,
 .widget:hover {
-  border-color: var(--border) !important;
-  box-shadow: var(--shadow-1) !important;
-  transform: none !important;
+  border-color: rgba(148, 163, 184, 0.38) !important;
+  box-shadow: var(--shadow-2) !important;
+  transform: translateY(-1px) !important;
   z-index: 6 !important;
 }
 
@@ -1341,8 +1342,8 @@ nav .navbar-icon {
   }
   .card .card-content,
   .widget .widgetContent {
-    padding: 14px !important;
-    margin: 0 8px !important;
+    padding: 14px 16px !important;
+    margin: 0 !important;
   }
   .widget .widgetTop {
     padding: 10px 12px !important;
@@ -3090,11 +3091,11 @@ label.floating textarea:not(:placeholder-shown)+.label {
 
 
 .widget .widgetContent {
-  padding: 10px !important;
+  padding: 18px 20px !important;
 }
 .card .card-content {
-    padding: 20px;
-    margin: 0px 15px 0px 15px;
+  padding: 18px 20px !important;
+  margin: 0 !important;
 }
 
 #root #secondNavBar .richMarketplaceMenuButton {
@@ -3151,14 +3152,14 @@ ul.dropdown-content.dataTablePeriods {
  */
 .card,
 .widget {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%) !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 247, 252, 0.9) 100%) !important;
     box-shadow: var(--shadow-soft) !important;
     border: 1px solid var(--glass-border) !important;
 }
 
 .dark-mode .card,
 .dark-mode .widget {
-    background: linear-gradient(180deg, rgba(17, 24, 39, 0.85) 0%, rgba(17, 24, 39, 0.72) 100%) !important;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.88) 0%, rgba(17, 24, 39, 0.74) 100%) !important;
     box-shadow: var(--shadow-soft) !important;
     border: 1px solid var(--glass-border) !important;
 }
